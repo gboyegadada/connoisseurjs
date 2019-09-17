@@ -1,11 +1,11 @@
 {
-  "name": "github-battle",
+  "name": "connoisseurjs",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.tsx",
   "scripts": {
     "build": "NODE_ENV='production' webpack",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server --no-inline"
   },
   "babel": {
     "presets": [
@@ -27,18 +27,28 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-icons": "^3.7.0",
-    "react-router-dom": "^5.0.1"
+    "react-redux": "^7.1.1",
+    "react-router-dom": "^5.0.1",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
+    "@types/react-redux": "^7.1.2",
     "babel-loader": "^8.0.6",
     "copy-webpack-plugin": "^5.0.4",
     "css-loader": "^3.2.0",
     "html-webpack-plugin": "^3.2.0",
+    "redux-devtools": "^3.5.0",
+    "source-map-loader": "^0.2.4",
     "style-loader": "^1.0.0",
+    "ts-loader": "^6.1.0",
+    "typescript": "^3.6.3",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.8",
     "webpack-dev-server": "^3.8.0"
