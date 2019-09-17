@@ -10,13 +10,24 @@ module.exports = {
         publicPath: '/'
     }, 
     resolve: {
-        extensions: ['.ts', '.tsx', '.js']
+        extensions: ['.ts', '.tsx', '.js', '.scss']
     },
     module: {
         rules: [
             { test: /\.ts(x?)$/, exclude: /node_modules/, use: 'ts-loader' },
             { test: /\.(js)$/, use: 'babel-loader' },
-            { test: /\.css$/, use: [ 'style-loader', 'css-loader']},
+            {
+              test: /\.s[ac]ss$/i,
+              exclude: /node_modules/,
+              use: [
+                // Creates `style` nodes from JS strings
+                'style-loader',
+                // Translates CSS into CommonJS
+                'css-loader',
+                // Compiles Sass to CSS
+                'sass-loader',
+              ],
+            },
             
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
             { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' }

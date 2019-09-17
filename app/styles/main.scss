@@ -1,0 +1,18 @@
+@import "mixins";
+
+//Responsive Breakpoints
+
+$xxs: 420px;
+$xs: 576px;
+$sm: 768px;
+$md: 992px;
+$lg: 1200px;
+$xl: 1440px;
+
+.container {
+    @include breakpoint($sm) {
+      width: 300px;
+      border: solid 1px #ff3434;
+      margin: 0 auto;
+    }
+}
