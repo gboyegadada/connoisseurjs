@@ -1,6 +1,29 @@
 @import "mixins";
 
-//Responsive Breakpoints
+// Contents
+
+// 1. Base
+// 2. Breakpoints
+// 3. Layout
+
+
+
+
+// 1. Base
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;   
+    overflow: hidden; 
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+
+// 2. Responsive Breakpoints
 
 $xxs: 420px;
 $xs: 576px;
@@ -9,10 +32,50 @@ $md: 992px;
 $lg: 1200px;
 $xl: 1440px;
 
+
+
+// 3. Layouts
+
+#app {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    height: 3rem;
+    width: 100%;
+    background: #000;
+}
+
 .container {
-    @include breakpoint($sm) {
-      width: 300px;
-      border: solid 1px #ff3434;
-      margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    
+    &>* {
+        height: 100%;
+        display: flex;
+        overflow-y: auto;
+    }
+    
+    &>.sidebar {
+        $sidebar-width: 240px;
+
+        flex-shrink: 0;
+        width: $sidebar-width;
+        background-color: #f0f0f0;
+        transform: translateX(-$sidebar-width);
+        transition: transform .3s;
+
+        @include breakpoint($sm) {
+            border: solid 1px #ff3434;
+            transform: translateX(0);
+        }
+    }
+
+    &>.main {
+        flex-grow: 1;
     }
 }
