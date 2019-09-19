@@ -17,13 +17,14 @@ app.use(express.static(path.join(__dirname, '../dist')))
 // parse JSON in the body of requests
 app.use(bp.json());
 
-app.get('/', (req, res) => {
+const router = express.Router()
+router.get('/', (req, res) => {
     res.send({
         msg: 'WYD ?? 👀'
     })
 })
 
-app.post('/', (req, res) => {
+router.post('/', (req, res) => {
     fetch(BASE_URL,
     { 
         method: 'post', 
