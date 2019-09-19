@@ -3,7 +3,7 @@ import { SearchQuery } from '../types/search'
 
 // To avoid exposing our KEY on the client side, we'll use 
 // a proxy endpoint.
-const BASE_URL = `/proxy/rest/search/v2`
+const BASE_URL = `/search`
 
 export const search = (query: SearchQuery) => {
     return axios.post(BASE_URL, {

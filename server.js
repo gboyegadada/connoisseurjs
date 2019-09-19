@@ -1,5 +1,4 @@
 const express = require('express')
-const serverless = require('serverless-http');
 const fetch = require('node-fetch')
 const path = require('path')
 const bp = require('body-parser'); // for parsing JSON in request bodies
@@ -9,19 +8,20 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const KEY = process.env.API_KEY
+const PORT = process.env.APP_PORT
 const BASE_URL = `https://cloudplatform.coveo.com/rest/search/v2`
 
 const app = express();
-app.use(express.static(path.join(__dirname, '../dist')))
+app.use(express.static(path.join(__dirname, 'dist')))
 
 // parse JSON in the body of requests
 app.use(bp.json());
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../dist', 'index.html'))
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'))
 })
 
-app.post('/rest/search/v2', (req, res) => {
+app.post('/search', (req, res) => {
     fetch(BASE_URL,
     { 
         method: 'post', 
@@ -38,7 +38,4 @@ app.post('/rest/search/v2', (req, res) => {
     })
 })
 
-app.use('/proxy/', router);  // path must route to lambda
-
-module.exports = app;
-module.exports.handler = serverless(app);
+app.listen(PORT)
