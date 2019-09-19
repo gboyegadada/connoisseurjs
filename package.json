@@ -8,7 +8,7 @@
   "scripts": {
     "build": "NODE_ENV='production' webpack",
     "start": "webpack-dev-server --no-inline",
-    "test": "ts-mocha"
+    "test": "ts-mocha 'test/*.tsx'"
   },
   "babel": {
     "presets": [
@@ -60,6 +60,7 @@
     "@babel/preset-react": "^7.0.0",
     "@types/chai": "^4.2.3",
     "@types/enzyme": "^3.10.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/express": "^4.17.1",
     "@types/mocha": "^5.2.7",
     "@types/react": "^16.9.2",
@@ -73,6 +74,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "html-webpack-plugin": "^3.2.0",
+    "mocha": "^6.2.0",
     "node-sass": "^4.12.0",
     "prettier": "^1.18.2",
     "redux-devtools": "^3.5.0",
