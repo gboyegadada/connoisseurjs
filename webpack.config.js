@@ -52,9 +52,6 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: 'app/index.html'
-        }),
-        new CopyPlugin([
-            { from: '_redirects' }
-        ])
+        })
     ]
 }
