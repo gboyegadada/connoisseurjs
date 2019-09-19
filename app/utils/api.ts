@@ -3,7 +3,7 @@ import { SearchQuery } from '../types/search'
 
 // To avoid exposing our KEY on the client side, we'll use 
 // a proxy endpoint.
-const BASE_URL = `/search`
+const BASE_URL = `https://jovial-golick-376158.netlify.com/.netlify/functions/search`
 
 export const search = (query: SearchQuery) => {
     return axios.post(BASE_URL, {
