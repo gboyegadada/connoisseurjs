@@ -1,8 +1,9 @@
 import axios from 'axios'
 import { SearchQuery } from '../types/search'
 
-const KEY = process.env.API_KEY
-const BASE_URL = `https://cloudplatform.coveo.com/rest/search/v2`
+// To avoid exposing our KEY on the client side, we'll use 
+// a proxy endpoint.
+const BASE_URL = `/rest/search/v2`
 
 export const search = (query: SearchQuery) => {
     return axios.post(BASE_URL, {
@@ -12,8 +13,7 @@ export const search = (query: SearchQuery) => {
     {
         headers: {
             "Content-Type": 'application/json',
-            Accept: 'application/json',
-            Authorization: `Bearer ${KEY}`
+            Accept: 'application/json'
         }
     })
     .then(res => res.data)
