@@ -1,4 +1,5 @@
 const express = require('express')
+const serverless = require('serverless-http');
 const fetch = require('node-fetch')
 const path = require('path')
 const bp = require('body-parser'); // for parsing JSON in request bodies
@@ -37,4 +38,7 @@ app.post('/rest/search/v2', (req, res) => {
     })
 })
 
-app.listen(8081)
+app.use('/.netlify/functions/server', router);  // path must route to lambda
+
+module.exports = app;
+module.exports.handler = serverless(app);
