@@ -3,7 +3,7 @@ import {createActionCreators, ImmerReducer} from "immer-reducer";
 import {Selectors} from "./state";
 import {State} from '../types/state'
 import { FacetValue, RawFacet, RawFacetValue } from "../types/facet";
-import { SearchQuery, SearchStatus, SearchResponse } from "../types/search";
+import { SearchQuery, SearchStatus, SearchResponse, SearchError } from "../types/search";
 
 
 /**
@@ -63,6 +63,7 @@ export class SearchReducer extends ImmerReducer<State> {
         this.draftState.status = SearchStatus.searching
         this.draftState.query = payload.query
         this.draftState.advancedQuery = payload.advancedQuery
+        this.draftState.response = null
     }
 
     /**
@@ -74,6 +75,15 @@ export class SearchReducer extends ImmerReducer<State> {
         this.draftState.status = SearchStatus.complete
 
         this.draftState.response = payload
+    }
+
+    /**
+     * Handle response from Coveo search endpoint
+     * 
+     * @param SearchResponse payload 
+     */
+    error(payload: SearchError) {
+        this.draftState.status = SearchStatus.error
     }
 }
 
@@ -88,6 +98,24 @@ export class SearchLifecycleReducer extends ImmerReducer<State> {
     }
 }
 
+/**
+ * Actions for opening and collapsing side menu in small screens
+ */
+export class MenuReducer extends ImmerReducer<State> {
+    openMenu() {
+        this.draftState.menuOpen = true
+    }
+
+    closeMenu() {
+        this.draftState.menuOpen = false
+    }
+
+    toggleMenu() {
+        this.draftState.menuOpen = !this.draftState.menuOpen
+    }
+}
+
 export const FacetActions = createActionCreators(FacetReducer);
+export const MenuActions = createActionCreators(MenuReducer);
 export const SearchActions = createActionCreators(SearchReducer);
 export const SearchLifecycleActions = createActionCreators(SearchLifecycleReducer);

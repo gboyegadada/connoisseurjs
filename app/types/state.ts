@@ -5,6 +5,7 @@ export interface State {
     query: string
     advancedQuery: string
     status: SearchStatus
+    menuOpen: boolean
     totalCount: number
     totalCountFiltered: number
     duration: number // ms

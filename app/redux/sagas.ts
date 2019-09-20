@@ -1,18 +1,24 @@
-import {put, takeLatest} from "redux-saga/effects";
+import {put, takeLatest} from "redux-saga/effects"
 
-import {SearchActions} from "./actions";
-import { search } from "../utils/api";
+import {SearchActions} from "./actions"
+import { search } from "../utils/api"
 
 function* monitorStartSearch(action: ReturnType<typeof SearchActions.startSearch>) {
 
-    console.log("Start search with query:", action.payload.query, action.payload.advancedQuery);
+    console.log("Start search with query:", action.payload.query, action.payload.advancedQuery)
 
-    const result = yield search(action.payload)
+    try {
+        const result = yield search(action.payload)
 
-    console.log("Search completed for", action.payload.query);
-    yield put(SearchActions.updateSearchResults(result));
+        console.log("Search completed for", action.payload.query)
+        yield put(SearchActions.updateSearchResults(result))
+    } catch (e) {
+        yield put(SearchActions.error({
+            message: e
+        }))
+    }
 }
 
 export function* rootSaga() {
-    yield takeLatest(SearchActions.startSearch.type, monitorStartSearch);
+    yield takeLatest(SearchActions.startSearch.type, monitorStartSearch)
 }

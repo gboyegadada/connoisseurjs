@@ -1,9 +1,9 @@
 import React, { ReactNode, FC } from 'react'
-import { Item } from '../types/item'
+import { ResultItem } from '../types/search'
 
 interface CardProps {
     children?: ReactNode
-    data: Item,
+    data: ResultItem,
     key: string
 }
 

@@ -2,7 +2,8 @@ import React, { ReactNode, FC } from 'react'
 import { createSearchConnect } from '../redux/store'
 import { SearchStatus } from '../types/search'
 import CardList from './CardList'
-import Loader from './Loader'
+import { MdSyncProblem } from 'react-icons/md'
+import { Bounce } from './spinners/Bounce'
 
 interface MainProps {
     children?: ReactNode
@@ -25,10 +26,15 @@ const Main: FC<MainProps> = () => {
         <SearchConnect>
             {(_) => (
             <div className='content'>
-                {_.status === SearchStatus.complete 
-                    ? <CardList list={_.results} />
-                    : <Loader loading={true} /> 
-                }
+                { _.status === SearchStatus.searching && <Bounce />  }
+                { _.status === SearchStatus.complete && <CardList list={_.results} /> }
+                { _.status === SearchStatus.error && (
+                    <div className='flex-center'>
+                        <h3>
+                            <MdSyncProblem size={18} /> There was an error loading your search results.
+                        </h3>
+                    </div>
+                 ) }
             </div>
         )}
         </SearchConnect>

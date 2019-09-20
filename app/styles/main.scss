@@ -5,6 +5,8 @@
 // 1. Base
 // 2. Breakpoints
 // 3. Layout
+// 4. Search Box
+// 5. Spinners
 
 
 
@@ -52,9 +54,32 @@ $xl: 1440px;
 }
 
 header {
-    height: 3rem;
+    display: flex;
+    justify-content: space-around;
+    height: 62px;
     width: 100%;
     background: #000;
+    padding: 0 0.3rem;
+    z-index: 10000;
+
+    button.menu-toggle {
+        background: none;
+        border: none;
+        
+        flex-basis: 50px;
+        padding: 3px 8px;
+        margin: 0;
+        color: #f0f0f0;
+
+        svg {
+            color: #f0f0f0;
+            margin-top: 4px;
+        }
+
+        @include breakpoint($sm) {
+            display: none;
+        }
+    }
 }
 
 .container {
@@ -69,27 +94,45 @@ header {
     }
     
     &>.sidebar {
+        z-index: 9999;
         $sidebar-width: 240px;
 
         flex-shrink: 0;
         width: $sidebar-width;
         background-color: #f0f0f0;
-        transform: translateX(-$sidebar-width);
         transition: transform .3s;
+        
+        position: fixed;
+        top: 50px;
+        padding-top: 10px;
+        left: -$sidebar-width;
+
+        &.open {
+            transform: translateX($sidebar-width);
+        }
 
         @include breakpoint($sm) {
-            border: solid 1px #ff3434;
-            transform: translateX(0);
+            position: relative;
+            left: 0px;
+            top: 0px;
+            
+            &.open {
+                transform: translateX(0);
+            }
         }
     }
 
-    &>.main {
+    &>.content {
         flex-grow: 1;
+        width: 100%;
+        margin: 0 0;
+        padding: 0 0;
     }
 }
 
 .flex-center {
     display: flex;
+    width: 100%;
     justify-content: center;
     align-items: center;
 }
@@ -105,4 +148,188 @@ header {
 
 .space-between {
     justify-content: space-between;
+}
+
+
+// 4. Search Box
+
+.search-box {
+    display: flex;
+    flex: 1;
+    width: auto;
+    margin: 8px;
+    margin-right: 10px;
+
+    @include breakpoint($sm) {
+        flex: none;
+        width: 400px;
+        margin: 8px auto;
+    }
+
+    &> input {
+        flex: 1;
+        padding: 3px 3px 3px 8px;
+        margin: 0;
+        font-size: 16px;
+        border: none;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15);
+        border-radius: 3px 0 0 3px;
+    }
+
+    &> button {
+        flex-basis: 50px;
+        padding: 3px;
+        margin: 0;
+        font-size: 24px;
+        border: none;
+        cursor: pointer;
+            
+        svg {
+            margin-top: 4px;
+        }
+
+
+        &.submit {
+            background: #f58c3a;
+            border-radius: 0 3px 3px 0;
+            color: #f0f0f0;
+
+            svg {
+                color: #f0f0f0;
+            }
+
+            &:hover {
+                background: #f58e3c;
+                color: #c0c0c0;
+            }
+        }
+
+        &.cancel {
+            background: #fff;
+            color: #e0e0e0;
+
+            svg {
+                color: #e0e0e0;
+            }
+
+            &:hover {
+                color: #c0c0c0;
+            }
+        }
+    }
+}
+
+
+// 5. Spinners
+
+.spinner-double-bounce {
+    width: 40px;
+    height: 40px;
+
+    position: relative;
+    margin: 100px auto;
+    
+    &>.double-bounce1, &>.double-bounce2 {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: #f58e3c;
+        opacity: 0.6;
+        position: absolute;
+        top: 0;
+        left: 0;
+        
+        -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+        animation: sk-bounce 2.0s infinite ease-in-out;
+    }
+    
+    &>.double-bounce2 {
+        -webkit-animation-delay: -1.0s;
+        animation-delay: -1.0s;
+    }
+    
+    @-webkit-keyframes sk-bounce {
+        0%, 100% { -webkit-transform: scale(0.0) }
+        50% { -webkit-transform: scale(1.0) }
+    }
+    
+    @keyframes sk-bounce {
+        0%, 100% { 
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+        } 50% { 
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+        }
+    }
+}
+
+.spinner-bounce {
+    margin: 100px auto 0;
+    width: 70px;
+    text-align: center;
+  
+    &> div {
+        width: 18px;
+        height: 18px;
+        background-color: #f58e3c;
+    
+        border-radius: 100%;
+        display: inline-block;
+        -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+        animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    }
+    
+    .bounce1 {
+        -webkit-animation-delay: -0.32s;
+        animation-delay: -0.32s;
+    }
+    
+    .bounce2 {
+        -webkit-animation-delay: -0.16s;
+        animation-delay: -0.16s;
+    }
+    
+    @-webkit-keyframes sk-bouncedelay {
+        0%, 80%, 100% { -webkit-transform: scale(0) }
+        40% { -webkit-transform: scale(1.0) }
+    }
+    
+    @keyframes sk-bouncedelay {
+        0%, 80%, 100% { 
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        } 40% { 
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+        }
+    }
+}
+
+
+// Make any icon spin !
+.spin {
+    -webkit-animation: spin 1000ms infinite linear;
+    animation: spin 1000ms infinite linear;
+
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+        }
+    }
+    @keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+        }
+    }
 }

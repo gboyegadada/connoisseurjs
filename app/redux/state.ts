@@ -1,11 +1,12 @@
 import { State } from '../types/state'
 import { FacetValue } from '../types/facet'
-import { SearchStatus } from '../types/search'
+import { SearchStatus, ResultItem } from '../types/search'
 
 export const initialState: State = {
     query: '',
     advancedQuery: '',
     status: SearchStatus.complete,
+    menuOpen: false,
     totalCount: 0,
     totalCountFiltered: 0,
     duration: 0,
@@ -39,7 +40,7 @@ export class Selectors {
         return this.state.status
     }
 
-    getSearchResults(): [] {
+    getSearchResults(): ResultItem[] {
         return this.state.response 
             ? this.state.response.results 
             : []

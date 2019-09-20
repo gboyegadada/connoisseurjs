@@ -1,11 +1,11 @@
 import React, { ReactNode, FC } from 'react'
-import { Item } from '../types/item'
 import Card from './Card'
 import '../styles/grid'
+import { ResultItem } from '../types/search'
 
 interface CardListProps {
     children?: ReactNode
-    list: Item[]
+    list: ResultItem[]
 }
 
 const CardList: FC<CardListProps> = (props) => {

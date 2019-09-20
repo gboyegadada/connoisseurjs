@@ -18,3 +18,12 @@ export interface SearchResponse {
     results: []
     groupByResults: []
 }
+
+export interface SearchError {
+    message: string
+}
+
+export interface ResultItem {
+    uniqueId: string
+    title: string
+}
