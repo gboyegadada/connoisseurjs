@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const fetch = require('node-fetch')
 const path = require('path')
 const bp = require('body-parser'); // for parsing JSON in request bodies
@@ -11,14 +12,19 @@ const KEY = process.env.API_KEY
 const PORT = process.env.APP_PORT
 const BASE_URL = `https://cloudplatform.coveo.com/rest/search/v2`
 
-const app = express();
+const app = express()
+app.use(cors())
 app.use(express.static(path.join(__dirname, 'dist')))
 
 // parse JSON in the body of requests
 app.use(bp.json());
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist', 'index.html'))
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'), {
+        headers: {
+            'Access-Control-Allow-Origin': '*'
+        }
+    })
 })
 
 app.post('/search', (req, res) => {

@@ -7,7 +7,7 @@ import { SearchQuery, SearchStatus, SearchResponse } from "../types/search";
 
 
 /**
- * Actions that actually modify the todo content
+ * Actions for handling facets and filters
  */
 export class FacetReducer extends ImmerReducer<State> {
     selectors = new Selectors(this.draftState);
@@ -49,21 +49,30 @@ export class FacetReducer extends ImmerReducer<State> {
 }
 
 /**
- * Actions that actually modify the todo content
+ * Actions that handle the search query and results
  */
 export class SearchReducer extends ImmerReducer<State> {
     selectors = new Selectors(this.draftState);
 
+    /**
+     * Initiate a search query and set the current status to: [searching]
+     * 
+     * @param SearchQuery payload 
+     */
     startSearch(payload: SearchQuery) {
         this.draftState.status = SearchStatus.searching
         this.draftState.query = payload.query
         this.draftState.advancedQuery = payload.advancedQuery
     }
 
+    /**
+     * Handle response from Coveo search endpoint
+     * 
+     * @param SearchResponse payload 
+     */
     updateSearchResults(payload: SearchResponse) {
         this.draftState.status = SearchStatus.complete
 
-        debugger
         this.draftState.response = payload
     }
 }
