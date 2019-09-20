@@ -1,5 +1,8 @@
 import React, { ReactNode, FC } from 'react'
 import { createSearchConnect } from '../redux/store'
+import { SearchStatus } from '../types/search'
+import CardList from './CardList'
+import Loader from './Loader'
 
 interface MainProps {
     children?: ReactNode
@@ -7,6 +10,9 @@ interface MainProps {
 }
 
 const SearchConnect = createSearchConnect({
+    mapActions: actions => ({
+        startSearch: actions.startSearch
+    }),
     mapState: selectors => ({
         status: selectors.getStatus(),
         results: selectors.getSearchResults()
@@ -19,9 +25,10 @@ const Main: FC<MainProps> = () => {
         <SearchConnect>
             {(_) => (
             <div className='content'>
-            <pre>
-                {JSON.stringify(_.results, null, 2)}
-            </pre>
+                {_.status === SearchStatus.complete 
+                    ? <CardList list={_.results} />
+                    : <Loader loading={true} /> 
+                }
             </div>
         )}
         </SearchConnect>

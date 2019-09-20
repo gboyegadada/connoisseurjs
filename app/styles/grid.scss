@@ -1,0 +1,29 @@
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+
+    &>li, &>.grid-item {
+        display: flex;
+        align-items: center;
+        margin: 10px;
+    }
+}
+
+.card-list {
+    margin: 20px 0; 
+    font-size: 20px;
+
+    .card {
+        border: solid 1px #f3f3f3;
+        background: #f3f3f3;
+
+        .card-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 3px;
+            margin: 0 auto;
+            display: block;
+        }
+        
+    }
+}

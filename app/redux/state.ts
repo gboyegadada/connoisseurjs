@@ -1,10 +1,11 @@
 import { State } from '../types/state'
 import { FacetValue } from '../types/facet'
+import { SearchStatus } from '../types/search'
 
 export const initialState: State = {
     query: '',
     advancedQuery: '',
-    status: 0,
+    status: SearchStatus.complete,
     totalCount: 0,
     totalCountFiltered: 0,
     duration: 0,
