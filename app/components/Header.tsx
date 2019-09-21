@@ -15,7 +15,9 @@ const SearchConnect = createSearchConnect({
         startSearch: actions.startSearch
     }),
     mapState: selectors => ({
-        status: selectors.getStatus()
+        status: selectors.getStatus(),
+        query: selectors.getSearchQuery(),
+        advancedQuery: selectors.getAdvancedQuery()
     })
 })
 
@@ -33,15 +35,19 @@ const Header: FC<HeaderProps> = () => {
         <SearchConnect>
             {(_, actions) => (
                 <header>
-                    <MenuConnect >
-                    {(_m, menuActions) => (
-                        <button className='menu-toggle' onClick={() => menuActions.toggleMenu()}>
-                            <MdMenu size={24} />
-                        </button>
-                    )}
-                    </MenuConnect>
+                    <section className='l'>
+                        <MenuConnect >
+                        {(_m, menuActions) => (
+                            <button className='menu-toggle' onClick={() => menuActions.toggleMenu()}>
+                                <MdMenu size={24} />
+                            </button>
+                        )}
+                        </MenuConnect>
+                    </section>
 
-                    <SearchBox onSubmit={actions.startSearch} status={_.status} />
+                    <section className='r'>
+                        <SearchBox searchAction={actions.startSearch} status={_.status} defaultQuery={ {q: _.query, aq: _.advancedQuery} } />
+                    </section>
                 </header>
             )}
         </SearchConnect>

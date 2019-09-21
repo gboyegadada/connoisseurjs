@@ -53,18 +53,34 @@ $xl: 1440px;
     flex-direction: column;
 }
 
+$sidebar-width: 240px;
+
 header {
     display: flex;
     justify-content: space-around;
     height: 62px;
     width: 100%;
     background: #000;
-    padding: 0 0.3rem;
+    padding: 0 0;
     z-index: 10000;
+
+    &>.l {
+        padding: 0 5px;
+        width: $sidebar-width - 10;
+    }
+
+    &>.r {
+        padding: 0 1.7rem;
+        flex-grow: 1;
+
+        display: flex;
+        justify-content: flex-start;
+    }
 
     button.menu-toggle {
         background: none;
         border: none;
+        cursor: pointer;
         
         flex-basis: 50px;
         padding: 3px 8px;
@@ -95,7 +111,6 @@ header {
     
     &>.sidebar {
         z-index: 9999;
-        $sidebar-width: 240px;
 
         flex-shrink: 0;
         width: $sidebar-width;
@@ -127,6 +142,10 @@ header {
         width: 100%;
         margin: 0 0;
         padding: 0 0;
+
+        .error { 
+            margin: 1em auto 8px 1.7em;
+        }
     }
 }
 
@@ -157,13 +176,13 @@ header {
     display: flex;
     flex: 1;
     width: auto;
-    margin: 8px;
+    margin: 8px 1em 8px auto;
     margin-right: 10px;
 
     @include breakpoint($sm) {
         flex: none;
         width: 400px;
-        margin: 8px auto;
+        margin: 8px 0;
     }
 
     &> input {
@@ -176,7 +195,9 @@ header {
         border-radius: 3px 0 0 3px;
     }
 
-    &> button {
+    &> button, &> a {
+        display: flex;
+        justify-content: space-around;
         flex-basis: 50px;
         padding: 3px;
         margin: 0;
@@ -205,6 +226,7 @@ header {
         }
 
         &.cancel {
+            flex-basis: 35px;
             background: #fff;
             color: #e0e0e0;
 
@@ -214,6 +236,10 @@ header {
 
             &:hover {
                 color: #c0c0c0;
+            }
+
+            &.hide {
+                display: none;
             }
         }
     }

@@ -26,4 +26,11 @@ export interface SearchError {
 export interface ResultItem {
     uniqueId: string
     title: string
+    uri: string
+    raw: {
+        tpthumbnailuri: string
+        tppays: string
+        tpregion: string
+        tpprixnum: string
+    }
 }

@@ -4,6 +4,7 @@ import { SearchStatus, SearchResponse } from './search';
 export interface State {
     query: string
     advancedQuery: string
+    queryId: number
     status: SearchStatus
     menuOpen: boolean
     totalCount: number

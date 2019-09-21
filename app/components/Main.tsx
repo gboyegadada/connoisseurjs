@@ -1,13 +1,15 @@
-import React, { ReactNode, FC } from 'react'
+import React, { ReactNode, FC, useEffect, useState } from 'react'
 import { createSearchConnect } from '../redux/store'
 import { SearchStatus } from '../types/search'
 import CardList from './CardList'
-import { MdSyncProblem } from 'react-icons/md'
+import { MdSyncProblem, MdHourglassEmpty } from 'react-icons/md'
 import { Bounce } from './spinners/Bounce'
+import queryString from 'query-string'
 
 interface MainProps {
     children?: ReactNode
     className?: string
+    location?: any
 }
 
 const SearchConnect = createSearchConnect({
@@ -16,29 +18,41 @@ const SearchConnect = createSearchConnect({
     }),
     mapState: selectors => ({
         status: selectors.getStatus(),
-        results: selectors.getSearchResults()
+        results: selectors.getSearchResults(),
+        queryId: selectors.getQueryId()
     })
 })
 
-const Main: FC<MainProps> = () => {
+export default class Main extends React.Component {
+    state = { searchTriggered: false }
 
-    return (
-        <SearchConnect>
-            {(_) => (
-            <div className='content'>
-                { _.status === SearchStatus.searching && <Bounce />  }
-                { _.status === SearchStatus.complete && <CardList list={_.results} /> }
-                { _.status === SearchStatus.error && (
-                    <div className='flex-center'>
-                        <h3>
-                            <MdSyncProblem size={18} /> There was an error loading your search results.
-                        </h3>
-                    </div>
-                 ) }
-            </div>
-        )}
-        </SearchConnect>
-    )
+    triggerSearch(searchAction: Function): null {
+        const {q = '', aq = ''} = queryString.parse(location.search)
+        searchAction({ query: q, advancedQuery: aq })
+
+        this.state.searchTriggered = true
+        
+        return null
+    }
+
+    render() {
+        return (
+            <SearchConnect>
+                {(_, actions) => (
+                <div className='content'>
+                    { !this.state.searchTriggered && this.triggerSearch(actions.startSearch) }
+                    { _.status === SearchStatus.searching && <Bounce />  }
+                    { _.status === SearchStatus.complete && <CardList list={_.results} /> }
+                    { _.status === SearchStatus.error && (
+                        <div className='flex-start'>
+                            <h3 className='error'>
+                                <MdSyncProblem size={18} /> There was an error loading your search results.
+                            </h3>
+                        </div>
+                    ) }
+                </div>
+            )}
+            </SearchConnect>
+        )
+    }
 }
-
-export default Main

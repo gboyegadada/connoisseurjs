@@ -1,11 +1,13 @@
 import { State } from '../types/state'
 import { FacetValue } from '../types/facet'
 import { SearchStatus, ResultItem } from '../types/search'
+import { number } from 'prop-types'
 
 export const initialState: State = {
     query: '',
     advancedQuery: '',
     status: SearchStatus.complete,
+    queryId: 0,
     menuOpen: false,
     totalCount: 0,
     totalCountFiltered: 0,
@@ -34,6 +36,10 @@ export class Selectors {
 
     getAdvancedQuery() {
         return this.state.advancedQuery
+    }
+
+    getQueryId() {
+        return this.state.queryId
     }
 
     getStatus() {

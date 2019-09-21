@@ -64,6 +64,7 @@ export class SearchReducer extends ImmerReducer<State> {
         this.draftState.query = payload.query
         this.draftState.advancedQuery = payload.advancedQuery
         this.draftState.response = null
+        this.draftState.queryId += 1
     }
 
     /**
