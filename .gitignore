@@ -3,4 +3,3 @@ node_modules
 dist
 .env
 fn/
-__snapshots__
