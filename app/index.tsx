@@ -16,7 +16,7 @@ import { Bounce } from './components/spinners/Bounce';
 
 export const store = makeStore();
 
-class App extends React.Component {
+export class App extends React.Component {
 
     render() {
         return (
