@@ -6,12 +6,6 @@ import { MdSyncProblem, MdHourglassEmpty } from 'react-icons/md'
 import { Bounce } from './spinners/Bounce'
 import queryString from 'query-string'
 
-interface MainProps {
-    children?: ReactNode
-    className?: string
-    location?: any
-}
-
 const SearchConnect = createSearchConnect({
     mapActions: actions => ({
         startSearch: actions.startSearch
