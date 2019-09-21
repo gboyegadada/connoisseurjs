@@ -10,7 +10,7 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === 'dev' || process.env.NODE_
     // dev code
     BASE_URL = `http://localhost:9000/.netlify/functions/search`
 } else {
-    BASE_URL = `https://jovial-golick-376158.netlify.com/.netlify/functions/search`
+    BASE_URL = `https://connoisseurjs.netlify.com/.netlify/functions/search`
 }
 
 const fields = [
@@ -66,7 +66,7 @@ const prepFacetPlaceholders = (): RawFacet[] => {
 
 export const search = (query: SearchQuery) => {
     return axios.post(BASE_URL, {
-        // ...{ groupBy: prepGroupByQuery() },
+        ...{ groupBy: prepGroupByQuery() },
         ...query
     }, 
     {
