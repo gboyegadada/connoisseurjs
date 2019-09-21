@@ -63,7 +63,7 @@ router.post('/', (req, res) => {
     axios.post(BASE_URL, {q, aq},
     { 
         headers: {
-            "Content-Type": 'application/json',
+            "Content-Type": 'application/x-www-form-urlencoded',
             Accept: 'application/json',
             Authorization: `Bearer ${KEY}`
         }

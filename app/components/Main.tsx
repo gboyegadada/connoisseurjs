@@ -19,16 +19,17 @@ const SearchConnect = createSearchConnect({
     mapState: selectors => ({
         status: selectors.getStatus(),
         results: selectors.getSearchResults(),
-        queryId: selectors.getQueryId()
+        queryId: selectors.getQueryId(),
+        queryParams: selectors.getQueryParams()
     })
 })
 
 export default class Main extends React.Component {
     state = { searchTriggered: false }
 
-    triggerSearch(searchAction: Function): null {
+    triggerSearch(searchAction: Function, queryParams: any): null {
         const {q = '', aq = ''} = queryString.parse(location.search)
-        searchAction({ query: q, advancedQuery: aq })
+        searchAction({ ...{ query: q }, ...queryParams })
 
         this.state.searchTriggered = true
         
@@ -40,7 +41,7 @@ export default class Main extends React.Component {
             <SearchConnect>
                 {(_, actions) => (
                 <div className='content'>
-                    { !this.state.searchTriggered && this.triggerSearch(actions.startSearch) }
+                    { !this.state.searchTriggered && this.triggerSearch(actions.startSearch, _.queryParams) }
                     { _.status === SearchStatus.searching && <Bounce />  }
                     { _.status === SearchStatus.complete && <CardList list={_.results} /> }
                     { _.status === SearchStatus.error && (

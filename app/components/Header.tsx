@@ -16,8 +16,9 @@ const SearchConnect = createSearchConnect({
     }),
     mapState: selectors => ({
         status: selectors.getStatus(),
-        query: selectors.getSearchQuery(),
-        advancedQuery: selectors.getAdvancedQuery()
+        q: selectors.getSearchQuery(),
+        aq: selectors.getAdvancedQuery(), 
+        queryParams: selectors.getQueryParams() 
     })
 })
 
@@ -46,7 +47,7 @@ const Header: FC<HeaderProps> = () => {
                     </section>
 
                     <section className='r'>
-                        <SearchBox searchAction={actions.startSearch} status={_.status} defaultQuery={ {q: _.query, aq: _.advancedQuery} } />
+                        <SearchBox searchAction={actions.startSearch} status={_.status} defaultQuery={ {q: _.q, aq: _.aq} } queryParams={_.queryParams} />
                     </section>
                 </header>
             )}

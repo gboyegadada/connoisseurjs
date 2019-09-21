@@ -1,17 +1,19 @@
-import { Facet } from './facet'
+import { FacetList } from './facet'
 import { SearchStatus, SearchResponse } from './search';
 
 export interface State {
-    query: string
-    advancedQuery: string
+    q: string
+    aq: string
     queryId: number
+    firstResult: number
+    language: string
+    numberOfResults: number
+    sortCriteria: string
+    sortField: string
     status: SearchStatus
     menuOpen: boolean
     totalCount: number
     totalCountFiltered: number
-    duration: number // ms
-    indexDuration: number // ms
-    requestDuration: number // ms
-    facets: {[id: string]: Facet}
+    facets: FacetList
     response: SearchResponse|null
 }

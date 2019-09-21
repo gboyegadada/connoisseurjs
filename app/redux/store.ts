@@ -10,7 +10,7 @@ import {
 import {makeConnector} from "redux-render-prop"
 import createSagaMiddleware from "redux-saga"
 
-import {FacetActions, FacetReducer, SearchLifecycleReducer, SearchReducer, SearchActions, MenuActions, MenuReducer} from "./actions"
+import {FacetActions, FacetReducer, SearchLifecycleReducer, SearchReducer, SearchActions, MenuActions, MenuReducer, PaginatorActions, PaginatorReducer} from "./actions"
 import {rootSaga} from "./sagas"
 import {initialState, Selectors} from "./state"
 import {State} from '../types/state' 
@@ -28,6 +28,11 @@ export const createFacetConnect = makeConnector({
 export const createMenuConnect = makeConnector({
     prepareState: (state: State) => state.menuOpen,
     prepareActions: dispatch => bindActionCreators(MenuActions, dispatch),
+})
+
+export const createPaginatorConnect = makeConnector({
+    prepareState: (state: State) => new Selectors(state),
+    prepareActions: dispatch => bindActionCreators(PaginatorActions, dispatch),
 })
 
 declare global {
@@ -65,6 +70,7 @@ export function makeStore() {
     const reducer = composeReducers<State>(
         createReducerFunction(FacetReducer, initialState),
         createReducerFunction(MenuReducer, initialState),
+        createReducerFunction(PaginatorReducer, initialState),
         createReducerFunction(SearchReducer, initialState),
         createReducerFunction(SearchLifecycleReducer, initialState),
     )

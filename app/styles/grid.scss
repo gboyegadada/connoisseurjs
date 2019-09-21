@@ -10,13 +10,6 @@
         align-items: left;
         margin: 10px;
     }
-    
-    @include breakpoint(1130px) {
-        &::after {
-            content: '';
-            flex: auto;
-        }
-    }
 }
 
 .card-list {
@@ -76,5 +69,40 @@
             }
         }
         
+    }
+}
+
+
+ul.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: solid 1px #ddd;
+    border-radius: 4px;
+
+    &>li {
+        flex: 1;
+        border: none;
+        padding: 5px 10px;
+        text-align: center;
+        transition: background-color 0.2;
+
+        &.active {
+            border: solid 1px #222!important;
+            background: #222!important;
+            color: #f58c3a;
+        }
+
+        &:hover {
+            background: #eee;
+        }
+
+        &:not(:first-child) {
+            border-left: solid 1px #ddd;
+        }
+
+        &:not(.disabled) {
+            cursor: pointer;
+        }
     }
 }

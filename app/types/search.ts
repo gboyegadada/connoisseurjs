@@ -1,6 +1,8 @@
 export interface SearchQuery {
-    query: string
-    advancedQuery: string 
+    q: string
+    aq: string 
+    firstResult: number
+    numberOfResults: number
 }
 
 export enum SearchStatus {

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { SearchQuery } from '../types/search'
+import { RawFacet } from '../types/facet'
 
 let BASE_URL: string
 
@@ -12,18 +13,69 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === 'dev' || process.env.NODE_
     BASE_URL = `https://jovial-golick-376158.netlify.com/.netlify/functions/search`
 }
 
+const fields = [
+    "@tpenspecial",
+    "@tpdisponibilite",
+    "@tpcategorie",
+    "@tppays",
+    "@tpregion",
+    "@tpmillesime",
+    "@tpcoteexpertsplitgroup",
+    "@tpcepagenomsplitgroup",
+    "@tpinventairenomsuccursalesplitgroup",
+    "@tpclassification",
+    "@tppastilledegout",
+    "@tpfamilledevinsplitgroup",
+    "@tpaccordsnommenu",
+    "@tpparticularitesplitgroup",
+    "@tpobservationsgustativesacidite",
+    "@tpobservationsgustativescorps",
+    "@tpobservationsgustativessucre",
+    "@tpobservationsgustativestannins",
+    "@tpobservationsgustativestexture",
+    "@tpprixnum"
+]
+
+const prepGroupByQuery = () => {
+    return fields.map(field => {
+        return field === '@tpprixnum' 
+        ? {
+            field: field,
+            completeFacetWithStandardValues: true,
+            generateAutomaticRanges: true,
+            maximumNumberOfValues: 1,
+            sortCriteria: "nosort"
+        }
+        
+        : {
+            field: field,
+            maximumNumberOfValues: 6,
+            sortCriteria: "occurrences",
+            injectionDepth: 1000,
+            completeFacetWithStandardValues: true
+        }
+    })
+}
+
+const prepFacetPlaceholders = (): RawFacet[] => {
+    return fields.map(field => ({
+        field,
+        values: []
+    }))
+}
+
 export const search = (query: SearchQuery) => {
     return axios.post(BASE_URL, {
-        q: query.query,
-        aq: query.advancedQuery
+        // ...{ groupBy: prepGroupByQuery() },
+        ...query
     }, 
     {
         headers: {
-            "Content-Type": 'application/json',
-            Accept: 'application/json'
+            "Content-Type": 'application/x-www-form-urlencoded',
+            "Accept": 'application/json'
         }
     })
-    .then(res => res.data)
+    .then(res => ({...res.data, ...{ groupByResults: prepFacetPlaceholders() }}))
     .catch(error => handleError(error))
 }
 

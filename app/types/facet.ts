@@ -8,9 +8,13 @@ export interface FacetValue {
     exclude: boolean
 }
 
-export interface Facet {
+export interface FacetItem {
     field: string
     values: FacetValue[];
+}
+
+export interface FacetList {
+    [id: string]: FacetItem
 }
 
 export interface RawFacetValue {

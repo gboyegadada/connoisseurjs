@@ -1,21 +1,23 @@
 import { State } from '../types/state'
-import { FacetValue } from '../types/facet'
+import { FacetValue, FacetItem, FacetList } from '../types/facet'
 import { SearchStatus, ResultItem } from '../types/search'
-import { number } from 'prop-types'
 
 export const initialState: State = {
-    query: '',
-    advancedQuery: '',
+    q: '',
+    aq: '',
     status: SearchStatus.complete,
     queryId: 0,
+    language: 'en',
+    firstResult: 0,
+    numberOfResults: 12,
+    sortCriteria: 'fielddescending',
+    sortField: '@tpmillesime',
     menuOpen: false,
     totalCount: 0,
     totalCountFiltered: 0,
-    duration: 0,
-    indexDuration: 0,
-    requestDuration: 0,
     facets: {},
     response: null
+
 }
 
 /**
@@ -30,12 +32,32 @@ export class Selectors {
         this.state = state
     }
 
+    getQueryParams() {
+        const {
+            aq,
+            language,
+            firstResult,
+            numberOfResults,
+            sortCriteria,
+            sortField
+        } = this.state
+
+        return {
+            aq,
+            language,
+            firstResult,
+            numberOfResults,
+            sortCriteria,
+            sortField
+        }
+    }
+
     getSearchQuery() {
-        return this.state.query
+        return this.state.q
     }
 
     getAdvancedQuery() {
-        return this.state.advancedQuery
+        return this.state.aq
     }
 
     getQueryId() {
@@ -46,15 +68,28 @@ export class Selectors {
         return this.state.status
     }
 
+    getOffset() {
+        return this.state.firstResult
+    }
+
+    getPageLength() {
+        return this.state.numberOfResults
+    }
+
+    getPageCount() {
+        const { totalCountFiltered, numberOfResults } = this.state
+
+        return Math.ceil(totalCountFiltered / numberOfResults)
+    }
+
     getSearchResults(): ResultItem[] {
         return this.state.response 
             ? this.state.response.results 
             : []
     }
 
-    getFacetIDs() {
-        return Object.values(this.state.facets)
-            .map(facet => facet.field)
+    getFacetList(): FacetList {
+        return this.state.facets
     }
 
     getFacet(id: string) {

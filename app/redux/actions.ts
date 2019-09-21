@@ -5,7 +5,6 @@ import {State} from '../types/state'
 import { FacetValue, RawFacet, RawFacetValue } from "../types/facet";
 import { SearchQuery, SearchStatus, SearchResponse, SearchError } from "../types/search";
 
-
 /**
  * Actions for handling facets and filters
  */
@@ -29,7 +28,9 @@ export class FacetReducer extends ImmerReducer<State> {
         };
     }
 
-    addFacets(payload: RawFacet[]) {
+    hydrateFacets(payload: RawFacet[]) {
+        this.draftState.facets = {}
+
         payload.map((facetPayload: RawFacet) => {
             this.addFacet(facetPayload)
         })
@@ -61,8 +62,8 @@ export class SearchReducer extends ImmerReducer<State> {
      */
     startSearch(payload: SearchQuery) {
         this.draftState.status = SearchStatus.searching
-        this.draftState.query = payload.query
-        this.draftState.advancedQuery = payload.advancedQuery
+        this.draftState.q = payload.q
+        this.draftState.aq = payload.aq
         this.draftState.response = null
         this.draftState.queryId += 1
     }
@@ -76,6 +77,8 @@ export class SearchReducer extends ImmerReducer<State> {
         this.draftState.status = SearchStatus.complete
 
         this.draftState.response = payload
+        this.draftState.totalCount = payload.totalCount
+        this.draftState.totalCountFiltered = payload.totalCountFiltered
     }
 
     /**
@@ -99,6 +102,38 @@ export class SearchLifecycleReducer extends ImmerReducer<State> {
     }
 }
 
+export class PaginatorReducer extends ImmerReducer<State> {
+    selectors = new Selectors(this.draftState);
+
+    /**
+     * Update offset to one page forward (12 items forward) in state. 
+     * We will listen for this action in a saga. 
+     */
+    next() {
+        this.draftState.firstResult += this.draftState.numberOfResults
+    }
+
+    /**
+     * Update offset by one page back (12 items back) in state. 
+     * We will listen for this action in a saga. 
+     */
+    previous() {
+        if (this.draftState.firstResult <= 0) return
+
+        this.draftState.firstResult += this.draftState.numberOfResults
+    }
+
+    gotoPage(payload: {page: number, query: SearchQuery}) {
+        let offset = payload.page * this.draftState.numberOfResults
+
+        if (offset < this.draftState.totalCount) {
+            this.draftState.firstResult = offset
+        } else {
+            this.draftState.firstResult = 0
+        }
+    }
+}
+
 /**
  * Actions for opening and collapsing side menu in small screens
  */
@@ -118,5 +153,6 @@ export class MenuReducer extends ImmerReducer<State> {
 
 export const FacetActions = createActionCreators(FacetReducer);
 export const MenuActions = createActionCreators(MenuReducer);
+export const PaginatorActions = createActionCreators(PaginatorReducer);
 export const SearchActions = createActionCreators(SearchReducer);
 export const SearchLifecycleActions = createActionCreators(SearchLifecycleReducer);
