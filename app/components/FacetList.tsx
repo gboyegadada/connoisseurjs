@@ -1,6 +1,5 @@
 import React, { ReactNode, FC } from 'react'
 import Facet from './Facet'
-import '../styles/grid'
 import { FacetItem, FacetList } from '../types/facet'
 
 interface FacetListProps {

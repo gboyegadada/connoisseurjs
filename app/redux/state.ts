@@ -17,7 +17,6 @@ export const initialState: State = {
     totalCountFiltered: 0,
     facets: {},
     response: null
-
 }
 
 /**
@@ -80,6 +79,18 @@ export class Selectors {
         const { totalCountFiltered, numberOfResults } = this.state
 
         return Math.ceil(totalCountFiltered / numberOfResults)
+    }
+
+    getTotalCount(): number {
+        return this.state.response 
+            ? this.state.response.totalCount 
+            : 0
+    }
+
+    getItemCount(): number {
+        return this.state.response 
+            ? this.state.response.results.length 
+            : 0
     }
 
     getSearchResults(): ResultItem[] {
