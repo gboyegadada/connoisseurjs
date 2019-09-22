@@ -45,9 +45,9 @@ function handleError(error, _res) {
       }
       console.log(error.config);
 
-      _res.send({
-          whoops: res
-      })
+      _res
+      .status(500)
+      .send(res)
 }
 
 const router = express.Router()

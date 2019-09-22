@@ -33,6 +33,7 @@ export class Selectors {
 
     getQueryParams() {
         const {
+            q,
             aq,
             language,
             firstResult,
@@ -42,6 +43,7 @@ export class Selectors {
         } = this.state
 
         return {
+            q,
             aq,
             language,
             firstResult,
@@ -88,15 +90,23 @@ export class Selectors {
     }
 
     getItemCount(): number {
-        return this.state.response 
+        return this.state.response && this.state.response.results
             ? this.state.response.results.length 
             : 0
     }
 
     getSearchResults(): ResultItem[] {
-        return this.state.response 
+        return this.state.response && this.state.response.results
             ? this.state.response.results 
             : []
+    }
+
+    getSortField() {
+        return this.state.sortField
+    }
+
+    getSortCriteria() {
+        return this.state.sortCriteria
     }
 
     getFacetList(): FacetList {

@@ -1,11 +1,11 @@
 import React, { ReactNode, FC, useState } from 'react'
 import { FiSearch } from 'react-icons/fi'
-import { MdClose, MdRefresh, MdSync, MdSyncProblem } from 'react-icons/md'
+import { MdClose, MdSync, MdSyncProblem } from 'react-icons/md'
 import { SearchStatus } from '../types/search'
-import { Link } from 'react-router-dom'
+import { Link, withRouter, RouteComponentProps } from 'react-router-dom'
 import queryString from 'query-string'
 
-interface SearchBoxProps {
+interface SearchBoxProps extends RouteComponentProps<any> {
     children?: ReactNode
     className?: string
     status: number
@@ -19,8 +19,9 @@ interface SearchBoxProps {
     searchAction: Function
 }
 
-const SearchBox: FC<SearchBoxProps> = ({ searchAction, defaultQuery, queryParams, status }) => {
-    const {q = ''} = queryString.parse(location.search)
+
+const SearchBox: FC<SearchBoxProps> = ({ searchAction, history, queryParams, status }) => {
+    const {q = '', ...qp} = queryString.parse(location.search)
     const [query, setQuery] = useState(`${q}`)
 
     return (
@@ -35,7 +36,8 @@ const SearchBox: FC<SearchBoxProps> = ({ searchAction, defaultQuery, queryParams
                 onKeyPress={e => {
                     if (e.key === 'Enter') {
                         e.preventDefault()
-                        searchAction({ ...{q: query }, ...queryParams })
+                        history.push(`/?${queryString.stringify({ ...qp, q: query })}`)
+                        searchAction({ ...queryParams, q: query })
                     }
                 }}
             />
@@ -46,9 +48,9 @@ const SearchBox: FC<SearchBoxProps> = ({ searchAction, defaultQuery, queryParams
 
             <Link 
                 className='submit' 
-                to={`/?${queryString.stringify({ q: query, aq: queryParams.aq })}`}
+                to={`/?${queryString.stringify({ ...qp, q: query })}`}
                 onClick={
-                    () => query !== '' && searchAction({ ...{q: query }, ...queryParams })
+                    () => query !== '' && searchAction({ ...queryParams, q: query })
                     }>
                     { status === SearchStatus.searching && <MdSync className='spin' size={22} /> }
                     { (status === SearchStatus.complete || (status === SearchStatus.error && query === '')) && <FiSearch size={22} /> }
@@ -58,4 +60,4 @@ const SearchBox: FC<SearchBoxProps> = ({ searchAction, defaultQuery, queryParams
     )
 }
 
-export default SearchBox
+export default withRouter(SearchBox)

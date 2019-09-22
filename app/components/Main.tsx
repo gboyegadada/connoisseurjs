@@ -23,7 +23,7 @@ export default class Main extends React.Component {
 
     triggerSearch(searchAction: Function, queryParams: any): null {
         const {q = '', aq = ''} = queryString.parse(location.search)
-        searchAction({ ...{ query: q }, ...queryParams })
+        searchAction({ ...queryParams, q, aq })
 
         this.state.searchTriggered = true
         
@@ -34,10 +34,10 @@ export default class Main extends React.Component {
         return (
             <SearchConnect>
                 {(_, actions) => (
-                <div className='content'>
+                <div className={`content ${(_.status === SearchStatus.searching ? 'loading' : '')}`}>
                     { !this.state.searchTriggered && this.triggerSearch(actions.startSearch, _.queryParams) }
-                    { _.status === SearchStatus.searching && <Bounce />  }
-                    { _.status === SearchStatus.complete && <CardList list={_.results} /> }
+                    { _.status === SearchStatus.searching && _.results.length < 1 && <Bounce />  }
+                    { _.status !== SearchStatus.error && _.results.length > 0 && <CardList list={_.results} /> }
                     { _.status === SearchStatus.error && (
                         <div className='flex-start'>
                             <h3 className='error'>

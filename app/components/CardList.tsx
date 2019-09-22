@@ -4,6 +4,7 @@ import { ResultItem } from '../types/search'
 import ReactPaginate from 'react-paginate'
 import { createPaginatorConnect } from '../redux/store'
 import { MdInfoOutline, MdSwapVert } from 'react-icons/md'
+import Sort from './Sort'
 
 interface CardListProps {
     children?: ReactNode
@@ -44,7 +45,7 @@ const CardList: FC<CardListProps> = (props) => {
                         </li>
 
                         <li>
-                            <MdSwapVert size='1.2em' />
+                            <Sort />
                         </li>
                     </ul>
                 </div>
@@ -64,7 +65,7 @@ const CardList: FC<CardListProps> = (props) => {
                     pageCount={_.pageCount}
                     marginPagesDisplayed={2}
                     pageRangeDisplayed={5}
-                    onPageChange={pg => actions.gotoPage({ page: pg.selected, query: {...{q: _.q}, ..._.queryParams} })}
+                    onPageChange={pg => actions.gotoPage({ page: pg.selected })}
                     containerClassName={'pagination'}
                     activeClassName={'active'}
                 />
