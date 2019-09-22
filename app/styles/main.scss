@@ -166,6 +166,7 @@ header {
     }
 
     &>.content {
+        position: relative;
         flex-grow: 1;
         width: 100%;
         margin: 0 0;
@@ -183,7 +184,7 @@ header {
 
         .bottom {
             margin-bottom: 1.5rem;
-            position: static;
+            position: relative;
         }
     }
 }
