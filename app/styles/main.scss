@@ -184,8 +184,10 @@ header {
         }
 
         .bottom {
-            margin-bottom: 1.5rem;
             position: relative;
+            height: 100px;
+            width: 100%;
+            margin-bottom: 1.5rem;
         }
     }
 }
