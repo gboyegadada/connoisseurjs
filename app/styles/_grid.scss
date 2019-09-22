@@ -104,6 +104,43 @@ ul.list-info {
     }
 }
 
+ul.sort {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    &>li {
+        border: none;
+        margin-left: 12px;
+        text-align: right;
+        font-size: 14px;
+        color: #444;
+
+        a {
+            text-decoration: none;
+            color: #444;
+            padding: 1px 6px;
+            border: none;
+            border-radius: 6px;
+
+            &:hover {
+                background: #e2e5e7;
+            }
+
+            &.active {
+                background: #edeff1;
+            }
+        }
+
+        svg {
+            vertical-align: middle;
+            color: #444;
+            position: relative;
+            top: -2px;
+        }
+    }
+}
+
 
 ul.pagination {
     position: relative;

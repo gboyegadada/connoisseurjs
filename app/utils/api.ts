@@ -13,6 +13,11 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === 'dev' || process.env.NODE_
     BASE_URL = `https://connoisseurjs.netlify.com/.netlify/functions/search`
 }
 
+/**
+ * There's currently no way to fetch this list 
+ * via the API (perhaps because it's a Sandbox) so 
+ * we'll put in an array for now.
+ */
 const fields = [
     "@tpenspecial",
     "@tpdisponibilite",
@@ -36,6 +41,9 @@ const fields = [
     "@tpprixnum"
 ]
 
+/**
+ * Tranform field list (👆🏽) to group-by query.
+ */
 const prepGroupByQuery = () => {
     return fields.map(field => {
         return field === '@tpprixnum' 
@@ -57,6 +65,11 @@ const prepGroupByQuery = () => {
     })
 }
 
+/**
+ * Prepare mock group-by results (to be injected into response).
+ * 
+ * [ Sandbox does not return group-by results. ]
+ */
 const prepFacetPlaceholders = (): RawFacet[] => {
     return fields.map(field => ({
         field,
@@ -64,6 +77,11 @@ const prepFacetPlaceholders = (): RawFacet[] => {
     }))
 }
 
+/**
+ * Helper fn to make API calls to search endpoint.
+ * 
+ * @param query 
+ */
 export const search = (query: SearchQuery) => {
     return axios.post(BASE_URL, {
         ...{ groupBy: prepGroupByQuery() },
@@ -79,7 +97,11 @@ export const search = (query: SearchQuery) => {
     .catch(error => handleError(error))
 }
 
-
+/**
+ * Throws an exception that we can catch later. Also logs useful data.
+ * 
+ * @param error
+ */
 function handleError(error: any) {
     let res: any;
 

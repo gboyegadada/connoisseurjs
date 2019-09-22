@@ -64,7 +64,6 @@ export class SearchReducer extends ImmerReducer<State> {
         this.draftState.status = SearchStatus.searching
         this.draftState.q = payload.q
         this.draftState.aq = payload.aq
-        this.draftState.response = null
         this.draftState.queryId += 1
     }
 
@@ -123,7 +122,7 @@ export class PaginatorReducer extends ImmerReducer<State> {
         this.draftState.firstResult += this.draftState.numberOfResults
     }
 
-    gotoPage(payload: {page: number, query: SearchQuery}) {
+    gotoPage(payload: {page: number}) {
         let offset = payload.page * this.draftState.numberOfResults
 
         if (offset < this.draftState.totalCount) {
@@ -131,6 +130,25 @@ export class PaginatorReducer extends ImmerReducer<State> {
         } else {
             this.draftState.firstResult = 0
         }
+    }
+}
+
+export class SortReducer extends ImmerReducer<State> {
+    selectors = new Selectors(this.draftState);
+
+    sort(payload: {criteria: string, field?: string}) {
+        const { criteria, field = '' } = payload
+
+        this.draftState.sortCriteria = criteria
+        this.draftState.sortField = field 
+    }
+
+    sortField(payload: {field: string}) {
+        this.draftState.sortField = payload.field
+    }
+
+    sortCriteria(payload: {value: string}) {
+        this.draftState.sortCriteria = payload.value
     }
 }
 
@@ -154,5 +172,6 @@ export class MenuReducer extends ImmerReducer<State> {
 export const FacetActions = createActionCreators(FacetReducer);
 export const MenuActions = createActionCreators(MenuReducer);
 export const PaginatorActions = createActionCreators(PaginatorReducer);
+export const SortActions = createActionCreators(SortReducer);
 export const SearchActions = createActionCreators(SearchReducer);
 export const SearchLifecycleActions = createActionCreators(SearchLifecycleReducer);
