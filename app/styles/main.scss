@@ -114,6 +114,7 @@ header {
         height: 100%;
         display: flex;
         overflow-y: auto;
+        scroll-behavior: smooth;
     }
     
     &>.sidebar {
@@ -182,6 +183,7 @@ header {
 
         .bottom {
             margin-bottom: 1.5rem;
+            position: static;
         }
     }
 }
@@ -396,3 +398,5 @@ header {
         }
     }
 }
+
+@import 'grid';

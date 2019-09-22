@@ -1,6 +1,5 @@
 import React, { ReactNode, FC, useState } from 'react'
 import Card from './Card'
-import '../styles/grid'
 import { ResultItem } from '../types/search'
 import ReactPaginate from 'react-paginate';
 import { createPaginatorConnect } from '../redux/store';
@@ -40,7 +39,7 @@ const CardList: FC<CardListProps> = (props) => {
         
         <PaginatorConnect>
             {(_, actions) =>(
-                <section className='bottom flex-center'>
+                <div className='bottom flex-center'>
                 <ReactPaginate
                     previousLabel={'previous'}
                     nextLabel={'next'}
@@ -53,7 +52,7 @@ const CardList: FC<CardListProps> = (props) => {
                     containerClassName={'pagination'}
                     activeClassName={'active'}
                 />
-                </section>
+                </div>
             )}
         </PaginatorConnect>
         </>
