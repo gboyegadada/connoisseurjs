@@ -23,17 +23,14 @@ export class App extends React.Component {
             <Router>
             <Provider store={store}>
                 <Header />
+                <Sidebar />
 
-                <section className='container'>
-                    <Sidebar />
-
-                    <React.Suspense fallback={<Bounce />}>
-                    <Switch>
-                        <Route exact path='/' component={Main} />
-                        <Route render={({location}) => <><h1>404</h1> <p>No route found for <b>{`${location.pathname}`}</b> !</p></>} />
-                    </Switch>
-                    </React.Suspense>
-                </section>
+                <React.Suspense fallback={<Bounce />}>
+                <Switch>
+                    <Route exact path='/' component={Main} />
+                    <Route render={({location}) => <><h1>404</h1> <p>No route found for <b>{`${location.pathname}`}</b> !</p></>} />
+                </Switch>
+                </React.Suspense>
             </Provider>
             </Router>
         )
