@@ -1,8 +1,9 @@
 import React, { ReactNode, FC, useState } from 'react'
 import Card from './Card'
 import { ResultItem } from '../types/search'
-import ReactPaginate from 'react-paginate';
-import { createPaginatorConnect } from '../redux/store';
+import ReactPaginate from 'react-paginate'
+import { createPaginatorConnect } from '../redux/store'
+import { MdInfoOutline, MdSwapVert } from 'react-icons/md'
 
 interface CardListProps {
     children?: ReactNode
@@ -12,13 +13,15 @@ interface CardListProps {
 const PaginatorConnect = createPaginatorConnect({
     mapActions: actions => ({
         next: actions.next,
-        previos: actions.previous,
+        previous: actions.previous,
         gotoPage: actions.gotoPage
     }),
     mapState: selectors => ({
         offset: selectors.getOffset(),
         pageLength: selectors.getPageLength(),
         pageCount: selectors.getPageCount(),
+        totalCount: selectors.getTotalCount(),
+        itemCount: selectors.getItemCount(),
         q: selectors.getSearchQuery(),
         queryParams: selectors.getQueryParams()
     })
@@ -28,17 +31,30 @@ const CardList: FC<CardListProps> = (props) => {
     const { list } = props
 
     const [pageCount, setPageCount] = useState(0)
+    const numFormat = new Intl.NumberFormat('en-US');
 
     return (
-        <>
-        <ul className='grid card-list'>
-            {list.map(item => (
-                <Card key={item.uniqueId} data={item} />
-            ))}
-        </ul>
-        
         <PaginatorConnect>
             {(_, actions) =>(
+            <>
+                <div className='top'>
+                    <ul className='list-info'>
+                        <li>
+                            <MdInfoOutline size='1.2em' /> Items <strong>{(_.offset+1)}</strong> to <strong>{(_.offset + _.itemCount)}</strong> of <strong>{numFormat.format(_.totalCount)}</strong>
+                        </li>
+
+                        <li>
+                            <MdSwapVert size='1.2em' />
+                        </li>
+                    </ul>
+                </div>
+                
+                <ul className='grid card-list'>
+                    {list.map(item => (
+                        <Card key={item.uniqueId} data={item} />
+                    ))}
+                </ul>
+            
                 <div className='bottom flex-center'>
                 <ReactPaginate
                     previousLabel={'previous'}
@@ -53,9 +69,9 @@ const CardList: FC<CardListProps> = (props) => {
                     activeClassName={'active'}
                 />
                 </div>
+            </>
             )}
         </PaginatorConnect>
-        </>
     )
 }
 
