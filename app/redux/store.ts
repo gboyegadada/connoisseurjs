@@ -1,19 +1,17 @@
-import {createReducerFunction} from "immer-reducer"
 import {
-    Action,
     applyMiddleware,
     bindActionCreators,
     compose,
     createStore,
-    Reducer,
 } from "redux"
 import {makeConnector} from "redux-render-prop"
 import createSagaMiddleware from "redux-saga"
 
-import {FacetActions, FacetReducer, SearchLifecycleReducer, SearchReducer, SearchActions, MenuActions, MenuReducer, PaginatorActions, PaginatorReducer, SortActions, SortReducer} from "./actions"
+import {FacetActions, SearchActions, MenuActions, PaginatorActions, SortActions} from "./actions"
 import {rootSaga} from "./sagas"
-import {initialState, Selectors} from "./state"
+import {Selectors} from "./state"
 import {State} from '../types/state' 
+import {rootReducer} from '../redux/reducers'
 
 export const createSearchConnect = makeConnector({
     prepareState: (state: State) => new Selectors(state),
@@ -53,37 +51,11 @@ const composeEnhancers =
           })
         : compose
 
-/**
- * Combine multiple reducers into a single one
- *
- * @param reducers two or more reducer
- */
-function composeReducers<S>(
-    ...reducers: (Reducer<S, any>)[]
-): Reducer<any, any> {
-    return (firstState: any, action: any) =>
-        reducers.reduce((state, subReducer) => {
-            if (typeof subReducer === "function") {
-                return subReducer(state, action)
-            }
-
-            return state
-        }, firstState) || firstState
-}
-
 export function makeStore() {
-    const reducer = composeReducers<State>(
-        createReducerFunction(FacetReducer, initialState),
-        createReducerFunction(MenuReducer, initialState),
-        createReducerFunction(PaginatorReducer, initialState),
-        createReducerFunction(SortReducer, initialState),
-        createReducerFunction(SearchReducer, initialState),
-        createReducerFunction(SearchLifecycleReducer, initialState),
-    )
     const sagaMiddleware = createSagaMiddleware()
 
     const store = createStore(
-        reducer,
+        rootReducer,
         composeEnhancers(applyMiddleware(sagaMiddleware)),
     )
 
