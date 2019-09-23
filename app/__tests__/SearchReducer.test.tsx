@@ -1,15 +1,13 @@
 import {rootReducer} from '../redux/reducers'
 
 // Import mock data for [#updateSearchResults] reducer action
-import payload__updateSearchResults from './mock/payloads/updateSearchResults.json'
-import state__updateSearchResults from './mock/states/updateSearchResults.json'
+import payload__updateSearchResults from './__mock__/payloads/updateSearchResults.json'
+import state__updateSearchResults from './__mock__/states/updateSearchResults.json'
 
 describe("Search Actions", () => {
   test('Start Search Action', () => {
-    let state
-
     // Dispatch
-    state = rootReducer(
+    const state = rootReducer(
           {
             q:'',
             aq:'',
@@ -63,10 +61,8 @@ describe("Search Actions", () => {
   })
 
   test('Update Search Results', () => {
-    let state;
-      
     // Dispatch
-    state = rootReducer({
+    const state = rootReducer({
       "q": "vin rouge",
       "aq": "",
       "status": 0,
