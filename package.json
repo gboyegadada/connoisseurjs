@@ -13,7 +13,8 @@
     "build:app": "webpack",
     "build:functions": "netlify-lambda build functions",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "clear:jest": "jest --clearCache"
   },
   "babel": {
     "presets": [
