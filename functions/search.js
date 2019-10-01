@@ -5,6 +5,7 @@ const axios = require('axios')
 const path = require('path')
 const bp = require('body-parser') // for parsing JSON in request bodies
 const dotenv = require('dotenv')
+const qs = require('qs')
 
 // loading .env file
 dotenv.config()
@@ -17,6 +18,7 @@ app.use(cors())
 
 // parse JSON in the body of requests
 app.use(bp.json());
+app.use(bp.urlencoded());
 
 function handleError(error, _res) {
     var res = {};
@@ -58,9 +60,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    const { q, aq } = req.body // Make sure we are getting nothing other than q and aq
-
-    axios.post(BASE_URL, {q, aq},
+    axios.post(BASE_URL, qs.stringify(req.body),
     { 
         headers: {
             "Content-Type": 'application/x-www-form-urlencoded',
