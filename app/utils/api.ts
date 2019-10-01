@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { SearchQuery } from '../types/search'
 import { RawFacet } from '../types/facet'
+import qs from 'qs'
 
 let BASE_URL: string
 
@@ -83,10 +84,10 @@ const prepFacetPlaceholders = (): RawFacet[] => {
  * @param query 
  */
 export const search = (query: SearchQuery) => {
-    return axios.post(BASE_URL, {
+    return axios.post(BASE_URL, qs.stringify({
         ...{ groupBy: prepGroupByQuery() },
         ...query
-    }, 
+    }), 
     {
         headers: {
             "Content-Type": 'application/x-www-form-urlencoded',
