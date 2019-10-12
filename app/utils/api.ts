@@ -67,35 +67,27 @@ const prepGroupByQuery = () => {
 }
 
 /**
- * Prepare mock group-by results (to be injected into response).
- * 
- * [ Sandbox does not return group-by results. ]
- */
-const prepFacetPlaceholders = (): RawFacet[] => {
-    return fields.map(field => ({
-        field,
-        values: []
-    }))
-}
-
-/**
  * Helper fn to make API calls to search endpoint.
  * 
  * @param query 
  */
-export const search = (query: SearchQuery) => {
-    return axios.post(BASE_URL, qs.stringify({
-        ...{ groupBy: prepGroupByQuery() },
-        ...query
-    }), 
-    {
-        headers: {
-            "Content-Type": 'application/x-www-form-urlencoded',
-            "Accept": 'application/json'
-        }
-    })
-    .then(res => ({...res.data, ...{ groupByResults: prepFacetPlaceholders() }}))
-    .catch(error => handleError(error))
+export const search = async (query: SearchQuery) => {
+    try {
+        const res = await axios.post(BASE_URL, qs.stringify({
+            ...{ groupBy: JSON.stringify(prepGroupByQuery()) },
+            ...query
+        }), 
+        {
+            headers: {
+                "Content-Type": 'application/x-www-form-urlencoded',
+                "Accept": 'application/json'
+            }
+        })
+        
+        return res.data
+    } catch(error) { 
+        return handleError(error)
+    }
 }
 
 /**

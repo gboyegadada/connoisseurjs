@@ -1,5 +1,5 @@
 import { State } from '../types/state'
-import { FacetValue, FacetItem, FacetList } from '../types/facet'
+import { FacetValue, FacetList } from '../types/facet'
 import { SearchStatus, ResultItem } from '../types/search'
 
 export const initialState: State = {
@@ -15,6 +15,7 @@ export const initialState: State = {
     menuOpen: false,
     totalCount: 0,
     totalCountFiltered: 0,
+    fields: [],
     facets: {},
     response: null
 }

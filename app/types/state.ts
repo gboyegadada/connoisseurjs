@@ -1,4 +1,4 @@
-import { FacetList } from './facet'
+import { FacetList, Field } from './facet'
 import { SearchStatus, SearchResponse } from './search';
 
 export interface State {
@@ -15,5 +15,6 @@ export interface State {
     totalCount: number
     totalCountFiltered: number
     facets: FacetList
+    fields: Field[]
     response: SearchResponse|null
 }

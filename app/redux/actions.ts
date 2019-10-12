@@ -2,8 +2,30 @@ import {createActionCreators, ImmerReducer} from "immer-reducer";
 
 import {Selectors} from "./state";
 import {State} from '../types/state'
-import { FacetValue, RawFacet, RawFacetValue } from "../types/facet";
+import { FacetValue, RawFacet, RawFacetValue, Field } from "../types/facet";
 import { SearchQuery, SearchStatus, SearchResponse, SearchError } from "../types/search";
+
+const facetLabels: {[id: string]: string} = {
+    "tpenspecial": "En spécial",
+    "tpdisponibilite": "Disponibilité",
+    "tpcategorie": "Catégorie",
+    "tppays": "Pays",
+    "tpregion": "Region",
+    "tpmillesime": "Millésime",
+    "tpcoteexpertsplitgroup": "Cote d\u0027expert",
+    "tpcepagenomsplitgroup": "Cépage",
+    "tpinventairenomsuccursalesplitgroup": "Succursale",
+    "tpclassification": "Classification",
+    "tppastilledegout": "Pastille de goût",
+    "tpfamilledevinsplitgroup": "Famille de vin",
+    "tpaccordsnommenu": "Accords suggérés",
+    "tpparticularitesplitgroup": "Particularité",
+    "tpobservationsgustativesacidite": "Acidité (Gustative)",
+    "tpobservationsgustativescorps": "Corps (Gustatif)",
+    "tpobservationsgustativessucre": "Sucre (Gustatif)",
+    "tpobservationsgustativestannins": "Tannins (Gustatif)",
+    "tpobservationsgustativestexture": "Texture (Gustative)"
+  }
 
 /**
  * Actions for handling facets and filters
@@ -24,6 +46,7 @@ export class FacetReducer extends ImmerReducer<State> {
     addFacet(payload: RawFacet) {
         this.draftState.facets[payload.field] = {
             field: payload.field,
+            title: facetLabels.hasOwnProperty(payload.field) ? facetLabels[payload.field] : '',
             values: payload.values.map(this.mapFacetValue)
         };
     }
@@ -36,10 +59,10 @@ export class FacetReducer extends ImmerReducer<State> {
         })
     }
 
-    tickFacetValue(payload: {id: string}) {
-        // const index = this.selectors.getFacetValueIndex(payload.field, payload.value);
+    tickFacetValue(payload: {field: string, value: string}) {
+        const index = this.selectors.getFacetValueIndex(payload.field, payload.value);
 
-        // this.draftState.facets[payload.field].values[index].checked = true
+        this.draftState.facets[payload.field].values[index].checked = true
     }
 
     untickFacetValue(payload: {field: string, value: string}) {
