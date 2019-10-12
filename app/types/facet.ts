@@ -10,6 +10,7 @@ export interface FacetValue {
 
 export interface FacetItem {
     field: string
+    title: string
     values: FacetValue[];
 }
 
@@ -29,4 +30,10 @@ export interface RawFacetValue {
 export interface RawFacet {
     field: string
     values: RawFacetValue[]
+}
+
+export interface Field {
+    id: string
+    name: string
+    description: string;
 }

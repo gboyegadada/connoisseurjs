@@ -1,5 +1,6 @@
 import React, { ReactNode, FC } from 'react'
 import { FacetItem } from '../types/facet'
+import FacetValue from './FacetValue';
 
 interface FacetProps {
     children?: ReactNode
@@ -8,13 +9,22 @@ interface FacetProps {
 }
 
 const Facet: FC<FacetProps> = (props) => {
-    const { field } = props.data
+    const { field, title, values } = props.data
     const numFormat = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'CAD' });
 
-    return (
+    return ( 
+        <>
+        {(values.length > 0) &&
         <li className='facet' key={field} data-field={field}>
-            <h5>&nbsp;</h5>
+            <h5 className="facet-heading">{title}</h5>
+            <ul className="facet-values">
+                {values.map(v => (
+                    <FacetValue field={field} data={v} key={v.value.toLowerCase().replace(' ', '-')}/>
+                ))}
+            </ul>
         </li>
+        }
+        </>
     )
 }
 
