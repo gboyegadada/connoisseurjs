@@ -31,9 +31,3 @@ export interface RawFacet {
     field: string
     values: RawFacetValue[]
 }
-
-export interface Field {
-    id: string
-    name: string
-    description: string;
-}

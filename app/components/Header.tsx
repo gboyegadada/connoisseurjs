@@ -12,7 +12,8 @@ interface HeaderProps {
 
 const SearchConnect = createSearchConnect({
     mapActions: actions => ({
-        startSearch: actions.startSearch
+        startSearch: actions.startSearch,
+        updateSearchQuery: actions.updateSearchQuery,
     }),
     mapState: selectors => ({
         status: selectors.getStatus(),
@@ -47,7 +48,7 @@ const Header: FC<HeaderProps> = () => {
                     </section>
 
                     <section className='r'>
-                        <SearchBox searchAction={actions.startSearch} status={_.status} defaultQuery={ {q: _.q, aq: _.aq} } queryParams={_.queryParams} />
+                        <SearchBox searchAction={actions.startSearch} updateSearchQueryAction={actions.updateSearchQuery} status={_.status} defaultQuery={ {q: _.q, aq: _.aq} } queryParams={_.queryParams} />
                     </section>
                 </header>
             )}

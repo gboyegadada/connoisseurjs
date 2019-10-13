@@ -14,47 +14,48 @@ interface SearchBoxProps extends RouteComponentProps<any> {
         aq?: string
     }
     queryParams: {
+        q: string
         aq: string
     }
     searchAction: Function
+    updateSearchQueryAction: Function
 }
 
 
-const SearchBox: FC<SearchBoxProps> = ({ searchAction, history, queryParams, status }) => {
+const SearchBox: FC<SearchBoxProps> = ({ searchAction, updateSearchQueryAction, history, queryParams, status }) => {
     const {q = '', ...qp} = queryString.parse(location.search)
-    const [query, setQuery] = useState(`${q}`)
 
     return (
         <div className='search-box'>
             <input 
                 type='text' 
                 placeholder='Search...' 
-                value={query} 
+                value={queryParams.q} 
                 onChange={e => {
-                    setQuery(e.target.value)
+                    updateSearchQueryAction({ ...queryParams, q: e.target.value })
                 }}
                 onKeyPress={e => {
                     if (e.key === 'Enter') {
                         e.preventDefault()
-                        history.push(`/?${queryString.stringify({ ...qp, q: query })}`)
-                        searchAction({ ...queryParams, q: query })
+                        history.push(`/?${queryString.stringify({ ...qp, q: queryParams.q })}`)
+                        searchAction()
                     }
                 }}
             />
 
-            <button className={`cancel ${'' === query ? 'hide' : ''}`} onClick={() => {
-                setQuery('')
+            <button className={`cancel ${'' === queryParams.q ? 'hide' : ''}`} onClick={() => {
+                updateSearchQueryAction({ ...queryParams, q: '' })
             }}><MdClose size={22} /></button>
 
             <Link 
                 className='submit' 
-                to={`/?${queryString.stringify({ ...qp, q: query })}`}
+                to={`/?${queryString.stringify({ ...qp, q: queryParams.q })}`}
                 onClick={
-                    () => query !== '' && searchAction({ ...queryParams, q: query })
+                    () => queryParams.q !== '' && searchAction()
                     }>
                     { status === SearchStatus.searching && <MdSync className='spin' size={22} /> }
-                    { (status === SearchStatus.complete || (status === SearchStatus.error && query === '')) && <FiSearch size={22} /> }
-                    { (status === SearchStatus.error && query !== '') && <MdSyncProblem size={22} /> }
+                    { (status === SearchStatus.complete || (status === SearchStatus.error && queryParams.q === '')) && <FiSearch size={22} /> }
+                    { (status === SearchStatus.error && queryParams.q !== '') && <MdSyncProblem size={22} /> }
             </Link>
         </div>
     )
