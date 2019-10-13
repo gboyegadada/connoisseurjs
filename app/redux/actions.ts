@@ -103,7 +103,6 @@ export class SearchReducer extends ImmerReducer<State> {
      */
     updateSearchQuery(payload: SearchQuery) {
         this.draftState.q = payload.q
-        this.draftState.queryId += 1
     }
 
     /**
