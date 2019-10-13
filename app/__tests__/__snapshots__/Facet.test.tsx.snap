@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Facet /> should display clickable Facet with 1 facet value 1`] = `
+<Fragment>
+  <li
+    className="facet"
+    data-field="tpdisponibilite"
+    key="tpdisponibilite"
+  >
+    <h5
+      className="facet-heading"
+    >
+      Disponibilité
+    </h5>
+    <ul
+      className="facet-values"
+    >
+      <withRouter(FacetValue)
+        data={
+          Object {
+            "checked": false,
+            "exclude": false,
+            "lookupValue": "En Succursale",
+            "numberOfResults": 1,
+            "score": 1,
+            "value": "En Succursale",
+            "valueType": "Standard",
+          }
+        }
+        field="tpdisponibilite"
+        key="en-succursale"
+      />
+    </ul>
+  </li>
+</Fragment>
+`;

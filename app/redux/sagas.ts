@@ -88,7 +88,8 @@ function* monitorFacetAction(action: ReturnType<any>) {
     const state = yield select()
     yield put(SearchActions.startSearch())
 
-    const { q, sortCriteria: order, sortField: sort } = (new Selectors(state)).getQueryParams()
+    const { q, sortCriteria = '', sortField: sort } = (new Selectors(state)).getQueryParams()
+    const order = sortCriteria === '' ? sortCriteria : sortCriteria.substring(5)
 
     action.payload.history.push(`/?${qs.stringify({q, order, sort, ...qs.parse(state.aqUrlEncoded)})}`)
 }

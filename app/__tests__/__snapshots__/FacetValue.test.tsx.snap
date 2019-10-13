@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FacetValue /> should display clickable Facet Value 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
+`;
