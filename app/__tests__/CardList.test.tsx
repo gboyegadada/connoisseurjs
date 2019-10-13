@@ -8,7 +8,7 @@ import CardList from "../components/CardList";
 
 
 describe("<CardList />", () => {
-  test("should display clickable Facet Value", async () => {
+  test("should display card grid", async () => {
     const main = shallow(<CardList 
             list={[
               { 

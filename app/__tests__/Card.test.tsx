@@ -8,7 +8,7 @@ import Card from "../components/Card";
 
 
 describe("<Card />", () => {
-  test("should display clickable Facet Value", async () => {
+  test("should display clickable item card", async () => {
     const main = shallow(<Card 
             key='-1$0$30292.23337$https://www.saq.com/page/fr/saqcom/vin-blanc/marc-tempe-gewurztraminer-mambourg-grand-cru-2009/12184732'
             data={{ 

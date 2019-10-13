@@ -8,7 +8,7 @@ import SearchBox from "../components/SearchBox";
 
 
 describe("<SearchBox />", () => {
-  test("should display clickable Facet Value", async () => {
+  test("should display search box", async () => {
     const main = shallow(<SearchBox 
         searchAction={(): any => null } 
         updateSearchQueryAction={(): any => null } 
