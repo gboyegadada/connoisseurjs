@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Card /> should display clickable Facet Value 1`] = `
+<li
+  className="card"
+  key="-1$0$30292.23337$https://www.saq.com/page/fr/saqcom/vin-blanc/marc-tempe-gewurztraminer-mambourg-grand-cru-2009/12184732"
+>
+  <a
+    href="https://www.saq.com/page/fr/saqcom/vin-blanc/marc-tempe-gewurztraminer-mambourg-grand-cru-2009/12184732"
+  >
+    <img
+      className="card-image"
+      src="http://s7d9.scene7.com/is/image/SAQ/12184732_is"
+    />
+  </a>
+  <a
+    href="https://www.saq.com/page/fr/saqcom/vin-blanc/marc-tempe-gewurztraminer-mambourg-grand-cru-2009/12184732"
+  >
+    <h5>
+      Marc Tempé Gewurztraminer Mambourg grand cru 2009
+    </h5>
+  </a>
+  <ul
+    className="card-info"
+  >
+    <li>
+      <MdLocationOn />
+       
+      France
+    </li>
+    <li>
+      <MdLocationCity />
+       
+      Alsace
+    </li>
+    <li>
+      CA$62.25
+    </li>
+  </ul>
+  <ul
+    className="tags"
+  />
+</li>
+`;
