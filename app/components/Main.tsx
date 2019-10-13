@@ -8,7 +8,8 @@ import queryString from 'query-string'
 
 const SearchConnect = createSearchConnect({
     mapActions: actions => ({
-        startSearch: actions.startSearch
+        startSearch: actions.startSearch,
+        buildQueryFromURL: actions.buildQueryFromURL,
     }),
     mapState: selectors => ({
         status: selectors.getStatus(),
@@ -21,9 +22,9 @@ const SearchConnect = createSearchConnect({
 export default class Main extends React.Component {
     state = { searchTriggered: false }
 
-    triggerSearch(searchAction: Function, queryParams: any): null {
-        const {q = '', aq = ''} = queryString.parse(location.search)
-        searchAction({ ...queryParams, q, aq })
+    triggerSearch(searchAction: Function, buildQueryFromURL: Function): null {
+        buildQueryFromURL()
+        searchAction()
 
         this.state.searchTriggered = true
         
@@ -35,7 +36,7 @@ export default class Main extends React.Component {
             <SearchConnect>
                 {(_, actions) => (
                 <div className={`content ${(_.status === SearchStatus.searching ? 'loading' : '')}`}>
-                    { !this.state.searchTriggered && this.triggerSearch(actions.startSearch, _.queryParams) }
+                    { !this.state.searchTriggered && this.triggerSearch(actions.startSearch, actions.buildQueryFromURL) }
                     { _.status === SearchStatus.searching && _.results.length < 1 && <Bounce />  }
                     { _.status !== SearchStatus.error && _.results.length > 0 && <CardList list={_.results} /> }
                     { _.status === SearchStatus.error && (

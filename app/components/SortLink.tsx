@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react'
 import { Link } from 'react-router-dom'
-import queryString from 'query-string'
+import qs from 'qs'
 import { MdExpandMore, MdExpandLess } from 'react-icons/md'
 
 interface SortLinkProps {
@@ -18,7 +18,7 @@ interface SortLinkProps {
 
 const SortLink: FC<SortLinkProps> = ({ label, criteria, field, activeField, activeCriteria, sortAction }) => {
     // Grab @field and @order from current query string if any...
-    const q = queryString.parse(location.search)
+    const q = qs.parse(location.search.substring(1))
     let {order = 'ascending'} = q
 
     if (!field) {
@@ -78,7 +78,7 @@ const SortLink: FC<SortLinkProps> = ({ label, criteria, field, activeField, acti
         <li>            
         <Link 
             className={active ? 'active' : ''} 
-            to={`/?${queryString.stringify({ ...q, ...s })}`}
+            to={`/?${qs.stringify({ ...q, ...s })}`}
             onClick={handleClick}>
                 {label} 
                 {active && _order === 'ascending' && <MdExpandMore size='1.3em' />}

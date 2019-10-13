@@ -1,18 +1,9 @@
 import axios from 'axios'
 import { SearchQuery } from '../types/search'
-import { RawFacet } from '../types/facet'
 import qs from 'qs'
 
-let BASE_URL: string
-
-// To avoid exposing our KEY on the client side, we'll use 
-// a proxy endpoint.
-if (!process.env.NODE_ENV || process.env.NODE_ENV === 'dev' || process.env.NODE_ENV === 'development') {
-    // dev code
-    BASE_URL = `http://localhost:9000/.netlify/functions/search`
-} else {
-    BASE_URL = `https://connoisseurjs.netlify.com/.netlify/functions/search`
-}
+const KEY = '058c85fd-3c79-42a3-9236-b83d35588103'
+const BASE_URL = `https://cloudplatform.coveo.com/rest/search/v2`
 
 /**
  * There's currently no way to fetch this list 
@@ -80,7 +71,8 @@ export const search = async (query: SearchQuery) => {
         {
             headers: {
                 "Content-Type": 'application/x-www-form-urlencoded',
-                "Accept": 'application/json'
+                "Accept": 'application/json',
+                "Authorization": `Bearer ${KEY}`
             }
         })
         

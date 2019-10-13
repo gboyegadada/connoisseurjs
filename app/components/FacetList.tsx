@@ -1,6 +1,7 @@
 import React, { ReactNode, FC } from 'react'
 import Facet from './Facet'
 import { FacetItem, FacetList } from '../types/facet'
+import qs from 'qs'
 
 interface FacetListProps {
     children?: ReactNode

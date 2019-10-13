@@ -5,7 +5,7 @@ import payload__updateSearchResults from './__mock__/payloads/updateSearchResult
 import state__updateSearchResults from './__mock__/states/updateSearchResults.json'
 
 describe("Search Actions", () => {
-  test('Start Search Action', () => {
+  test('Update Search Query Action', () => {
     // Dispatch
     const state = rootReducer(
           {
@@ -22,20 +22,64 @@ describe("Search Actions", () => {
             totalCount:0,
             totalCountFiltered:0,
             facets:{},
+            reloadSearch: false,
             response:null
           }, 
     
           {
-            type:'IMMER_REDUCER:SearchReducer#startSearch',
+            type:'IMMER_REDUCER:SearchReducer#updateSearchQuery',
             payload: {
                 q:'vin rouge',
-                aq:'',
-                language:'en',
-                firstResult:0,
-                numberOfResults:12,
-                sortCriteria:'fielddescending',
-                sortField:'@tpmillesime'
+                aq:''
             }
+          }
+      )
+
+    // Assert
+    expect(state).toEqual(
+        {
+            q:'vin rouge',
+            aq:'',
+            status:1,
+            queryId:0,
+            language:'en',
+            firstResult:0,
+            numberOfResults:12,
+            sortCriteria:'fielddescending',
+            sortField:'@tpmillesime',
+            menuOpen:false,
+            totalCount:0,
+            totalCountFiltered:0,
+            facets:{},
+            reloadSearch: false,
+            response:null
+          }
+      )
+  })
+
+  test('Start Search Action', () => {
+    // Dispatch
+    const state = rootReducer(
+          {
+            q:'vin rouge',
+            aq:'',
+            status:1,
+            queryId:0,
+            language:'en',
+            firstResult:0,
+            numberOfResults:12,
+            sortCriteria:'fielddescending',
+            sortField:'@tpmillesime',
+            menuOpen:false,
+            totalCount:0,
+            totalCountFiltered:0,
+            facets:{},
+            reloadSearch: false,
+            response:null
+          }, 
+    
+          {
+            type:'IMMER_REDUCER:SearchReducer#startSearch'
           }
       )
 
@@ -55,6 +99,7 @@ describe("Search Actions", () => {
             totalCount:0,
             totalCountFiltered:0,
             facets:{},
+            reloadSearch: false,
             response:null
           }
       )

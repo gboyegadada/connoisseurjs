@@ -1,9 +1,10 @@
-import { FacetList, Field } from './facet'
+import { FacetList } from './facet'
 import { SearchStatus, SearchResponse } from './search';
 
 export interface State {
     q: string
     aq: string
+    aqUrlEncoded: string
     queryId: number
     firstResult: number
     language: string
@@ -15,6 +16,6 @@ export interface State {
     totalCount: number
     totalCountFiltered: number
     facets: FacetList
-    fields: Field[]
+    reloadSearch: boolean
     response: SearchResponse|null
 }

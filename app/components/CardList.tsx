@@ -31,7 +31,6 @@ const PaginatorConnect = createPaginatorConnect({
 const CardList: FC<CardListProps> = (props) => {
     const { list } = props
 
-    const [pageCount, setPageCount] = useState(0)
     const numFormat = new Intl.NumberFormat('en-US');
 
     return (

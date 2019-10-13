@@ -1,11 +1,13 @@
 import React, { ReactNode, FC } from 'react'
-import { FacetItem, FacetValue } from '../types/facet'
-import { MdCheckBox, MdCheckBoxOutlineBlank } from 'react-icons/md';
+import { FacetValue } from '../types/facet'
+import { MdCheckBox, MdCheckBoxOutlineBlank, MdNotInterested, MdIndeterminateCheckBox } from 'react-icons/md';
 import { createFacetConnect } from '../redux/store';
+import qs from 'qs'
+import { RouteComponentProps, withRouter } from 'react-router';
 
-interface FacetValueProps {
+interface FacetValueProps extends RouteComponentProps<any> {
     children?: ReactNode
-    data: FacetValue,
+    data: FacetValue
     key: string
     field: string
 }
@@ -13,29 +15,42 @@ interface FacetValueProps {
 const FacetConnect = createFacetConnect({
     mapActions: actions => ({
         tick: actions.tickFacetValue,
-        untick: actions.untickFacetValue
+        untick: actions.untickFacetValue,
+        include: actions.includeFacetValue,
+        exclude: actions.excludeFacetValue
+    }),
+    mapState: selectors => ({
+        queryParams: selectors.getQueryParams(),
+        aqUrlEncoded: selectors.getAdvancedQueryString(),
     })
 })
 
-const FacetValue: FC<FacetValueProps> = (props) => {
-    const { key, field, data: { value, numberOfResults, checked, exclude } } = props
+const FacetValue: FC<FacetValueProps> = ({ key, field, history, data: { value, numberOfResults, checked, exclude }}) => {
+    const qp = qs.parse(location.search.substring(1))
     const numFormat = new Intl.NumberFormat('en-IN');
 
-    const toggleTick = (a: any) => {
-        checked ? a.untick({ field, value }) : a.tick({ field, value })
+    const toggleTick = (a: any, s: any) => {
+        checked ? a.untick({ field, value, history }) : a.tick({ field, value, history })
+    }
+
+    const toggleExclude = (a: any, s: any) => {
+        exclude ? a.include({ field, value, history }) : a.exclude({ field, value, history })
     }
 
     return (
         <FacetConnect>
         {(_, actions) => (
-        <li className='facet-value' key={key} data-value={value} data-count={numberOfResults} onClick={() => toggleTick(actions)}>
-            { checked ? <MdCheckBox size={21} /> : <MdCheckBoxOutlineBlank size={21} /> }
+        <li className='facet-value' key={key} data-value={value} data-count={numberOfResults}>
+            { checked && !exclude && <MdCheckBox size={21} onClick={() => toggleTick(actions, _)} /> }
+            { checked && exclude && <MdIndeterminateCheckBox size={21} onClick={() => toggleTick(actions, _)} /> }
+            { !checked && <MdCheckBoxOutlineBlank size={21} onClick={() => toggleTick(actions, _)} /> }
             
-            <span className="facet-value-label">{value}</span> <span className="facet-value-count">{numFormat.format(numberOfResults)}</span>
+            <span className={`facet-value-label ${exclude ? 'exclude' : ''}`} onClick={() => toggleTick(actions, _)}>{value}</span> <span className="facet-value-count">{numFormat.format(numberOfResults)}</span>
+            <MdNotInterested className={`facet-value-exclude ${exclude ? 'active' : ''}`} size={12}  onClick={() => toggleExclude(actions, _)}/>
         </li>
         )}
         </FacetConnect>
     )
 }
 
-export default FacetValue
+export default withRouter(FacetValue)

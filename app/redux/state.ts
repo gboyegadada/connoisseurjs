@@ -4,7 +4,8 @@ import { SearchStatus, ResultItem } from '../types/search'
 
 export const initialState: State = {
     q: '',
-    aq: '',
+    aq: '', // Example: "((@tpdisponibilite=="En Succursale") ((NOT @tpdisponibilite=="En Ligne"))) ((NOT @tpparticularitesplitgroup=="Produit bio"))"
+    aqUrlEncoded: '',
     status: SearchStatus.complete,
     queryId: 0,
     language: 'en',
@@ -15,8 +16,8 @@ export const initialState: State = {
     menuOpen: false,
     totalCount: 0,
     totalCountFiltered: 0,
-    fields: [],
     facets: {},
+    reloadSearch: false,
     response: null
 }
 
@@ -60,6 +61,10 @@ export class Selectors {
 
     getAdvancedQuery() {
         return this.state.aq
+    }
+
+    getAdvancedQueryString() {
+        return this.state.aqUrlEncoded
     }
 
     getQueryId() {

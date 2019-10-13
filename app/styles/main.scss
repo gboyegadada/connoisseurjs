@@ -158,6 +158,9 @@ header {
 
                 li.facet-value {
                     cursor: pointer;
+                    border-radius: 6px;
+                    padding-bottom: 2px;
+                    padding-left: 4px;
                     
                     .facet-value-label {
                         display: inline-block;
@@ -167,6 +170,10 @@ header {
                         overflow: hidden;
                         text-overflow: ellipsis;
                         vertical-align: middle;
+
+                        &.exclude {
+                            text-decoration: line-through;
+                        }
                     }
 
                     .facet-value-count {
@@ -179,6 +186,26 @@ header {
                         color: #aaa;
                         vertical-align: middle;
                         margin-right: 4px;
+                    }
+
+                    svg.facet-value-exclude {
+                        float: right;
+                        color: #aaa;
+                        margin-left: 6px;
+                        margin-top: 8px;
+                        opacity: 0;
+                    }
+
+                    &:hover {
+                        background-color: #fafafc;
+
+                        svg.facet-value-exclude {
+                            opacity: 1;
+
+                            &:hover {
+                                color: #fa4444;
+                            }
+                        }
                     }
                 }
             }
