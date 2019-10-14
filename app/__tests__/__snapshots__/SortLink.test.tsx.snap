@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SortLink /> should display clickable sort links 1`] = `
+<li>
+  <Link
+    className="active"
+    onClick={[Function]}
+    to="/?sort=%40tpmillesime&order=descending"
+  >
+    Millesime
+    <MdExpandMore
+      size="1.3em"
+    />
+  </Link>
+</li>
+`;

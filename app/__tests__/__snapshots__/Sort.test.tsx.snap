@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CardList /> should display card grid 1`] = `
+exports[`<Sort /> should display sort component 1`] = `
 <ConnectAdvanced(reduxRenderPropRender)>
   <Component />
 </ConnectAdvanced(reduxRenderPropRender)>

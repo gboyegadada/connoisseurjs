@@ -1,28 +1,51 @@
 import React from 'react';
-import { shallow, configure } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16';
+import { mount } from 'enzyme'
 
-configure({ adapter: new Adapter() });
+jest.mock('react-router-dom');
 
-import SearchBox from "../components/SearchBox";
-
+import { SearchBox } from "../components/SearchBox";
+import { createBrowserHistory } from 'history';
 
 describe("<SearchBox />", () => {
-  test("should display search box", async () => {
-    const main = shallow(<SearchBox 
-        searchAction={(): any => null } 
-        updateSearchQueryAction={(): any => null } 
-        defaultQuery={{
-          q: 'Vin Rouge',
-          aq: '',
-        }} 
-        queryParams={{
-          q: 'Vin Rouge',
-          aq: '',
-        }} 
-        status={1}
-        />)
+  const history = createBrowserHistory()
 
-    expect(main).toMatchSnapshot()
-  });
-});
+  const wrapper = mount(<SearchBox
+    history={history}
+    location={history.location}
+    match={{
+      params: {},
+      isExact: false,
+      path: '',
+      url: '',
+    }}
+    searchAction={(): any => null } 
+    updateSearchQueryAction={(): any => null } 
+    defaultQuery={{
+      q: 'Vin Rouge',
+      aq: '',
+    }} 
+    queryParams={{
+      q: 'Vin Rouge',
+      aq: '',
+    }} 
+    status={1}
+    />
+  )
+
+  it('Matches snapshot', async () => {
+    expect(wrapper).toMatchSnapshot()
+  })
+
+  it('renders search text <input />', async () => {
+    expect(wrapper.find('input').length).toEqual(1);
+  })
+
+  it('renders cancel <button />', async () => {
+    expect(wrapper.find('button').length).toEqual(1);
+  })
+
+  it('renders search <Link /> button', async () => {
+    expect(wrapper.find('Link').length).toEqual(1);
+  })
+
+})
