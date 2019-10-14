@@ -1,27 +1,29 @@
 import React from 'react';
-import { shallow } from 'enzyme'
+import configureStore from 'redux-mock-store'
+import { mount } from 'enzyme'
 
 import CardList from "../components/CardList";
+import { Provider } from 'react-redux';
 
+import state__updateSearchResults from './__mock__/states/updateSearchResults.json'
+
+jest.mock('react-router-dom');
 
 describe("<CardList />", () => {
-  test("should display card grid", async () => {
-    const main = shallow(<CardList 
-            list={[
-              { 
-                "title": "Marc Tempé Gewurztraminer Mambourg grand cru 2009",
-                "uri": "https://www.saq.com/page/fr/saqcom/vin-blanc/marc-tempe-gewurztraminer-mambourg-grand-cru-2009/12184732",
-                "uniqueId": "-1$0$30292.23337$https://www.saq.com/page/fr/saqcom/vin-blanc/marc-tempe-gewurztraminer-mambourg-grand-cru-2009/12184732",
-                "raw": {
-                  "tpregion": "Alsace",
-                  "tppays": "France",
-                  "tpthumbnailuri": "http://s7d9.scene7.com/is/image/SAQ/12184732_is",
-                  "tpprixnum": 62.25,
-                }
-              }
-          ]}
-        />)
+  const initialState = state__updateSearchResults
+  const mockStore = configureStore()
+  let store: any 
+  let wrapper: any
 
-    expect(main).toMatchSnapshot()
-  });
-});
+  beforeEach(()=>{
+      store = mockStore(initialState)
+      wrapper = mount(<Provider store={store}><CardList 
+              list={state__updateSearchResults.response.results}
+          /></Provider>)
+  })
+
+  test("should display card grid", async () => {
+    expect(wrapper).toMatchSnapshot()
+    expect(wrapper.find('PaginationBoxView').length).toEqual(1)
+  })
+})

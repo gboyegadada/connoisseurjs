@@ -28,7 +28,7 @@ const PaginatorConnect = createPaginatorConnect({
     })
 })
 
-const CardList: FC<CardListProps> = (props) => {
+export const CardList: FC<CardListProps> = (props) => {
     const { list } = props
 
     const numFormat = new Intl.NumberFormat('en-US');
