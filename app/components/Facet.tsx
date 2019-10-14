@@ -18,9 +18,10 @@ const Facet: FC<FacetProps> = (props) => {
         <li className='facet' key={field} data-field={field}>
             <h5 className="facet-heading">{title}</h5>
             <ul className="facet-values">
-                {values.map(v => (
-                    <FacetValue field={field} data={v} key={v.value.toLowerCase().replace(' ', '-')}/>
-                ))}
+                {values.map(v => {
+                    const k = v.value.toLowerCase().replace(' ', '-')
+                    return <FacetValue field={field} data={v} fkey={k} key={k}/>
+                })}
             </ul>
         </li>
         }

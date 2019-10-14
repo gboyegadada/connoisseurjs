@@ -1,5 +1,5 @@
 import React, { ReactNode, FC } from 'react'
-import { FacetValue } from '../types/facet'
+import { FacetValue as FacetValueType } from '../types/facet'
 import { MdCheckBox, MdCheckBoxOutlineBlank, MdNotInterested, MdIndeterminateCheckBox } from 'react-icons/md';
 import { createFacetConnect } from '../redux/store';
 import qs from 'qs'
@@ -7,8 +7,8 @@ import { RouteComponentProps, withRouter } from 'react-router';
 
 interface FacetValueProps extends RouteComponentProps<any> {
     children?: ReactNode
-    data: FacetValue
-    key: string
+    data: FacetValueType
+    fkey: string
     field: string
 }
 
@@ -25,7 +25,7 @@ const FacetConnect = createFacetConnect({
     })
 })
 
-const FacetValue: FC<FacetValueProps> = ({ key, field, history, data: { value, numberOfResults, checked, exclude }}) => {
+export const FacetValue: FC<FacetValueProps> = ({ fkey, field, history, data: { value, numberOfResults, checked, exclude }}) => {
     const qp = qs.parse(location.search.substring(1))
     const numFormat = new Intl.NumberFormat('en-IN');
 
@@ -40,7 +40,7 @@ const FacetValue: FC<FacetValueProps> = ({ key, field, history, data: { value, n
     return (
         <FacetConnect>
         {(_, actions) => (
-        <li className='facet-value' key={key} data-value={value} data-count={numberOfResults}>
+        <li className='facet-value' key={fkey} data-value={value} data-count={numberOfResults}>
             { checked && !exclude && <MdCheckBox size={21} onClick={() => toggleTick(actions, _)} /> }
             { checked && exclude && <MdIndeterminateCheckBox size={21} onClick={() => toggleTick(actions, _)} /> }
             { !checked && <MdCheckBoxOutlineBlank size={21} onClick={() => toggleTick(actions, _)} /> }

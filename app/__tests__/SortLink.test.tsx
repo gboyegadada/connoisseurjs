@@ -1,12 +1,13 @@
 import React from 'react';
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 
-import SortLink from "../components/SortLink";
+import { SortLink } from "../components/SortLink";
 
+jest.mock('react-router-dom');
 
 describe("<SortLink />", () => {
   test("should display clickable sort links", async () => {
-    const main = shallow(<SortLink 
+    const wrapper = mount(<SortLink
           label='Millesime' 
           field='@tpmillesime' 
           criteria='ascending'
@@ -19,6 +20,7 @@ describe("<SortLink />", () => {
           sortAction={(): any => null}
         />)
 
-    expect(main).toMatchSnapshot()
-  });
+    expect(wrapper).toMatchSnapshot()
+    expect(wrapper.find('Link').length).toEqual(1)
+  })
 });

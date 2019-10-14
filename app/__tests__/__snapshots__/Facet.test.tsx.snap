@@ -15,7 +15,7 @@ exports[`<Facet /> should display clickable Facet with 1 facet value 1`] = `
     <ul
       className="facet-values"
     >
-      <withRouter(FacetValue)
+      <withRouter()
         data={
           Object {
             "checked": false,
@@ -28,6 +28,7 @@ exports[`<Facet /> should display clickable Facet with 1 facet value 1`] = `
           }
         }
         field="tpdisponibilite"
+        fkey="en-succursale"
         key="en-succursale"
       />
     </ul>
