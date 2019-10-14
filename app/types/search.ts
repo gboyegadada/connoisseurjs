@@ -33,6 +33,6 @@ export interface ResultItem {
         tpthumbnailuri: string
         tppays: string
         tpregion: string
-        tpprixnum: string
+        tpprixnum: string|number
     }
 }

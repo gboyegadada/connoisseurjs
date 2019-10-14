@@ -16,7 +16,7 @@ interface SortLinkProps {
     sortAction: Function
 }
 
-const SortLink: FC<SortLinkProps> = ({ label, criteria, field, activeField, activeCriteria, sortAction }) => {
+export const SortLink: FC<SortLinkProps> = ({ label, criteria, field, activeField, activeCriteria, sortAction }) => {
     // Grab @field and @order from current query string if any...
     const q = qs.parse(location.search.substring(1))
     let {order = 'ascending'} = q
