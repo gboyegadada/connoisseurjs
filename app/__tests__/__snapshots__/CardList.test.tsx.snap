@@ -1,0 +1,766 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CardList /> should display card grid 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Component
+    list={
+      Array [
+        Object {
+          "ClickUri": "https://www.saq.com/page/fr/saqcom/vin-blanc/marc-tempe-gewurztraminer-mambourg-grand-cru-2009/12184732",
+          "Excerpt": "Retour au sous-menu de la section Informations supplémentaires sur le produit ... Les informations ci-dessus correspondent aux plus récentes données disponibles. ... Elles peuvent donc varier en fo...",
+          "PrintableUri": "http://www.saq.com/items/Marc Tempé Gewurztraminer Mambourg grand cru 2009",
+          "Title": "Marc Tempé Gewurztraminer Mambourg grand cru 2009",
+          "UniqueId": "-1$0$30292.23337$https://www.saq.com/page/fr/saqcom/vin-blanc/marc-tempe-gewurztraminer-mambourg-grand-cru-2009/12184732",
+          "Uri": "https://www.saq.com/page/fr/saqcom/vin-blanc/marc-tempe-gewurztraminer-mambourg-grand-cru-2009/12184732",
+          "absentTerms": Array [],
+          "childResults": Array [],
+          "clickUri": "https://www.saq.com/page/fr/saqcom/vin-blanc/marc-tempe-gewurztraminer-mambourg-grand-cru-2009/12184732",
+          "excerpt": "Retour au sous-menu de la section Informations supplémentaires sur le produit ... Les informations ci-dessus correspondent aux plus récentes données disponibles. ... Elles peuvent donc varier en fo...",
+          "excerptHighlights": Array [],
+          "firstSentencesHighlights": Array [],
+          "flags": "HasHtmlVersion",
+          "hasHtmlVersion": true,
+          "hasMobileHtmlVersion": false,
+          "isRecommendation": false,
+          "isTopResult": false,
+          "isUserActionView": false,
+          "percentScore": 73.9483,
+          "printableUri": "http://www.saq.com/items/Marc Tempé Gewurztraminer Mambourg grand cru 2009",
+          "printableUriHighlights": Array [],
+          "rating": 3,
+          "raw": Object {
+            "clickableuri": "https://www.saq.com/page/fr/saqcom/vin-blanc/marc-tempe-gewurztraminer-mambourg-grand-cru-2009/12184732",
+            "collection": "Default",
+            "concepts": "points SAQ ; offerts aux membres ; habillage des bouteilles ; affichés ; mention expresse ; prix réduits ; transaction ; favoris ; accordé ; bénéfice ; achat ; client ; stock ; connecté ; inscrit ; sous-menu",
+            "date": -17955907200000,
+            "documenttype": "WebPage",
+            "filetype": "webscraperwebpage",
+            "folders": "00001https://http:/0cc8ba12
+00002https://http:/www.saq.com/5a2fe8a7
+00003https://http:/www.saq.com/items/cef30134",
+            "indexeddate": 1568790598000,
+            "language": "French",
+            "printableuri": "http://www.saq.com/items/Marc Tempé Gewurztraminer Mambourg grand cru 2009",
+            "rowid": 2701569,
+            "site": "www.saq.com",
+            "size": 136340,
+            "source": "SAQ",
+            "sysclickableuri": "https://www.saq.com/page/fr/saqcom/vin-blanc/marc-tempe-gewurztraminer-mambourg-grand-cru-2009/12184732",
+            "syscollection": "Default",
+            "sysconcepts": "points SAQ ; offerts aux membres ; habillage des bouteilles ; affichés ; mention expresse ; prix réduits ; transaction ; favoris ; accordé ; bénéfice ; achat ; client ; stock ; connecté ; inscrit ; sous-menu",
+            "sysdate": -17955907200000,
+            "sysdocumenttype": "WebPage",
+            "sysfiletype": "webscraperwebpage",
+            "sysfolders": "00001https://http:/0cc8ba12
+00002https://http:/www.saq.com/5a2fe8a7
+00003https://http:/www.saq.com/items/cef30134",
+            "sysindexeddate": 1568790598000,
+            "syslanguage": "French",
+            "sysprintableuri": "http://www.saq.com/items/Marc Tempé Gewurztraminer Mambourg grand cru 2009",
+            "sysrowid": 2701569,
+            "syssite": "www.saq.com",
+            "syssize": 136340,
+            "syssource": "SAQ",
+            "syssourcetype": "WebScraper",
+            "systitle": "Marc Tempé Gewurztraminer Mambourg grand cru 2009",
+            "systopparent": "212430611844506277",
+            "systopparentid": 212430611844506270,
+            "sysuri": "http://www.saq.com/items/Marc Tempé Gewurztraminer Mambourg grand cru 2009",
+            "sysurihash": "6ui3FW/HEz//bw3p",
+            "title": "Marc Tempé Gewurztraminer Mambourg grand cru 2009",
+            "topparent": "212430611844506277",
+            "topparentid": 212430611844506270,
+            "tpbouchon": "Liège",
+            "tpcategorie": "Vin blanc",
+            "tpcategorieraw": "Vin blanc, 750 ml",
+            "tpcepagenomsplitgroup": "Gewurztraminer",
+            "tpcepagesplitgroup": "Gewurztraminer 100 %",
+            "tpcodecup": "04000121847320",
+            "tpcodesaq": "12184732",
+            "tpcontenant": "Contenant de verre coloré",
+            "tpcouleur": "Blanc",
+            "tpcoveoconnectorhasbinarydata": "false",
+            "tpdisponibilite": "Bientôt disponible",
+            "tpformat": "750 ml",
+            "tpmillesime": "2009",
+            "tpnomdebouteille": "Marc Tempé Gewurztraminer Mambourg grand cru 2009",
+            "tppagetitle": "Marc Tempé Gewurztraminer Mambourg grand cru 2009",
+            "tpparticularite": "Produit bio",
+            "tpparticularitesplitgroup": "Produit bio;",
+            "tppays": "France",
+            "tpprixbande": "50$ - 75$",
+            "tpprixnormal": "62,25 $",
+            "tpprixnum": 62.25,
+            "tpproducteur": "Marc Tempé",
+            "tpregion": "Alsace",
+            "tpthumbnailuri": "http://s7d9.scene7.com/is/image/SAQ/12184732_is",
+            "uri": "http://www.saq.com/items/Marc Tempé Gewurztraminer Mambourg grand cru 2009",
+            "urihash": "6ui3FW/HEz//bw3p",
+          },
+          "score": 1080,
+          "summaryHighlights": Array [],
+          "title": "Marc Tempé Gewurztraminer Mambourg grand cru 2009",
+          "titleHighlights": Array [],
+          "totalNumberOfChildResults": 0,
+          "uniqueId": "-1$0$30292.23337$https://www.saq.com/page/fr/saqcom/vin-blanc/marc-tempe-gewurztraminer-mambourg-grand-cru-2009/12184732",
+          "uri": "https://www.saq.com/page/fr/saqcom/vin-blanc/marc-tempe-gewurztraminer-mambourg-grand-cru-2009/12184732",
+        },
+      ]
+    }
+  >
+    <ConnectAdvanced(reduxRenderPropRender)>
+      <reduxRenderPropRender
+        mappedActions={
+          Object {
+            "gotoPage": [Function],
+            "next": [Function],
+            "previous": [Function],
+          }
+        }
+        mappedState={
+          Object {
+            "itemCount": 1,
+            "offset": 0,
+            "pageCount": 1146,
+            "pageLength": 12,
+            "q": "vin rouge",
+            "queryParams": Object {
+              "aq": "",
+              "firstResult": 0,
+              "language": "en",
+              "numberOfResults": 12,
+              "q": "vin rouge",
+              "sortCriteria": "fielddescending",
+              "sortField": "@tpmillesime",
+            },
+            "totalCount": 13741,
+          }
+        }
+        render={[Function]}
+      >
+        <div
+          className="top"
+        >
+          <ul
+            className="list-info"
+          >
+            <li>
+              <MdInfoOutline
+                size="1.2em"
+              >
+                <IconBase
+                  attr={
+                    Object {
+                      "viewBox": "0 0 24 24",
+                    }
+                  }
+                  size="1.2em"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1.2em"
+                    size="1.2em"
+                    stroke="currentColor"
+                    strokeWidth="0"
+                    style={
+                      Object {
+                        "color": undefined,
+                      }
+                    }
+                    viewBox="0 0 24 24"
+                    width="1.2em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"
+                      key="0"
+                    />
+                  </svg>
+                </IconBase>
+              </MdInfoOutline>
+               Items 
+              <strong>
+                1
+              </strong>
+               to 
+              <strong>
+                1
+              </strong>
+               of 
+              <strong>
+                13,741
+              </strong>
+            </li>
+            <li>
+              <Sort>
+                <ConnectAdvanced(reduxRenderPropRender)>
+                  <reduxRenderPropRender
+                    mappedActions={
+                      Object {
+                        "sort": [Function],
+                        "sortCriteria": [Function],
+                      }
+                    }
+                    mappedState={
+                      Object {
+                        "aq": "",
+                        "q": "vin rouge",
+                        "queryParams": Object {
+                          "aq": "",
+                          "firstResult": 0,
+                          "language": "en",
+                          "numberOfResults": 12,
+                          "q": "vin rouge",
+                          "sortCriteria": "fielddescending",
+                          "sortField": "@tpmillesime",
+                        },
+                        "sortCriteria": "fielddescending",
+                        "sortField": "@tpmillesime",
+                      }
+                    }
+                    render={[Function]}
+                  >
+                    <ul
+                      className="sort"
+                    >
+                      <Component
+                        activeCriteria="fielddescending"
+                        activeField="@tpmillesime"
+                        criteria="ascending"
+                        field="@tpmillesime"
+                        label="Millesime"
+                        queryParams={
+                          Object {
+                            "aq": "",
+                            "firstResult": 0,
+                            "language": "en",
+                            "numberOfResults": 12,
+                            "q": "vin rouge",
+                            "sortCriteria": "fielddescending",
+                            "sortField": "@tpmillesime",
+                          }
+                        }
+                        sortAction={[Function]}
+                      >
+                        <li>
+                          <Link
+                            className="active"
+                            onClick={[Function]}
+                            to="/?sort=%40tpmillesime&order=descending"
+                          />
+                        </li>
+                      </Component>
+                      <Component
+                        activeCriteria="fielddescending"
+                        activeField="@tpmillesime"
+                        criteria="ascending"
+                        field="@tpprixnum"
+                        label="Prix"
+                        queryParams={
+                          Object {
+                            "aq": "",
+                            "firstResult": 0,
+                            "language": "en",
+                            "numberOfResults": 12,
+                            "q": "vin rouge",
+                            "sortCriteria": "fielddescending",
+                            "sortField": "@tpmillesime",
+                          }
+                        }
+                        sortAction={[Function]}
+                      >
+                        <li>
+                          <Link
+                            className=""
+                            onClick={[Function]}
+                            to="/?sort=%40tpprixnum&order=descending"
+                          />
+                        </li>
+                      </Component>
+                      <Component
+                        activeCriteria="fielddescending"
+                        activeField="@tpmillesime"
+                        criteria="relevancy"
+                        label="Relevancy"
+                        queryParams={
+                          Object {
+                            "aq": "",
+                            "firstResult": 0,
+                            "language": "en",
+                            "numberOfResults": 12,
+                            "q": "vin rouge",
+                            "sortCriteria": "fielddescending",
+                            "sortField": "@tpmillesime",
+                          }
+                        }
+                        sortAction={[Function]}
+                      >
+                        <li>
+                          <Link
+                            className=""
+                            onClick={[Function]}
+                            to="/?sort=&order=relevancy"
+                          />
+                        </li>
+                      </Component>
+                    </ul>
+                  </reduxRenderPropRender>
+                </ConnectAdvanced(reduxRenderPropRender)>
+              </Sort>
+            </li>
+          </ul>
+        </div>
+        <ul
+          className="grid card-list"
+        >
+          <Card
+            data={
+              Object {
+                "ClickUri": "https://www.saq.com/page/fr/saqcom/vin-blanc/marc-tempe-gewurztraminer-mambourg-grand-cru-2009/12184732",
+                "Excerpt": "Retour au sous-menu de la section Informations supplémentaires sur le produit ... Les informations ci-dessus correspondent aux plus récentes données disponibles. ... Elles peuvent donc varier en fo...",
+                "PrintableUri": "http://www.saq.com/items/Marc Tempé Gewurztraminer Mambourg grand cru 2009",
+                "Title": "Marc Tempé Gewurztraminer Mambourg grand cru 2009",
+                "UniqueId": "-1$0$30292.23337$https://www.saq.com/page/fr/saqcom/vin-blanc/marc-tempe-gewurztraminer-mambourg-grand-cru-2009/12184732",
+                "Uri": "https://www.saq.com/page/fr/saqcom/vin-blanc/marc-tempe-gewurztraminer-mambourg-grand-cru-2009/12184732",
+                "absentTerms": Array [],
+                "childResults": Array [],
+                "clickUri": "https://www.saq.com/page/fr/saqcom/vin-blanc/marc-tempe-gewurztraminer-mambourg-grand-cru-2009/12184732",
+                "excerpt": "Retour au sous-menu de la section Informations supplémentaires sur le produit ... Les informations ci-dessus correspondent aux plus récentes données disponibles. ... Elles peuvent donc varier en fo...",
+                "excerptHighlights": Array [],
+                "firstSentencesHighlights": Array [],
+                "flags": "HasHtmlVersion",
+                "hasHtmlVersion": true,
+                "hasMobileHtmlVersion": false,
+                "isRecommendation": false,
+                "isTopResult": false,
+                "isUserActionView": false,
+                "percentScore": 73.9483,
+                "printableUri": "http://www.saq.com/items/Marc Tempé Gewurztraminer Mambourg grand cru 2009",
+                "printableUriHighlights": Array [],
+                "rating": 3,
+                "raw": Object {
+                  "clickableuri": "https://www.saq.com/page/fr/saqcom/vin-blanc/marc-tempe-gewurztraminer-mambourg-grand-cru-2009/12184732",
+                  "collection": "Default",
+                  "concepts": "points SAQ ; offerts aux membres ; habillage des bouteilles ; affichés ; mention expresse ; prix réduits ; transaction ; favoris ; accordé ; bénéfice ; achat ; client ; stock ; connecté ; inscrit ; sous-menu",
+                  "date": -17955907200000,
+                  "documenttype": "WebPage",
+                  "filetype": "webscraperwebpage",
+                  "folders": "00001https://http:/0cc8ba12
+00002https://http:/www.saq.com/5a2fe8a7
+00003https://http:/www.saq.com/items/cef30134",
+                  "indexeddate": 1568790598000,
+                  "language": "French",
+                  "printableuri": "http://www.saq.com/items/Marc Tempé Gewurztraminer Mambourg grand cru 2009",
+                  "rowid": 2701569,
+                  "site": "www.saq.com",
+                  "size": 136340,
+                  "source": "SAQ",
+                  "sysclickableuri": "https://www.saq.com/page/fr/saqcom/vin-blanc/marc-tempe-gewurztraminer-mambourg-grand-cru-2009/12184732",
+                  "syscollection": "Default",
+                  "sysconcepts": "points SAQ ; offerts aux membres ; habillage des bouteilles ; affichés ; mention expresse ; prix réduits ; transaction ; favoris ; accordé ; bénéfice ; achat ; client ; stock ; connecté ; inscrit ; sous-menu",
+                  "sysdate": -17955907200000,
+                  "sysdocumenttype": "WebPage",
+                  "sysfiletype": "webscraperwebpage",
+                  "sysfolders": "00001https://http:/0cc8ba12
+00002https://http:/www.saq.com/5a2fe8a7
+00003https://http:/www.saq.com/items/cef30134",
+                  "sysindexeddate": 1568790598000,
+                  "syslanguage": "French",
+                  "sysprintableuri": "http://www.saq.com/items/Marc Tempé Gewurztraminer Mambourg grand cru 2009",
+                  "sysrowid": 2701569,
+                  "syssite": "www.saq.com",
+                  "syssize": 136340,
+                  "syssource": "SAQ",
+                  "syssourcetype": "WebScraper",
+                  "systitle": "Marc Tempé Gewurztraminer Mambourg grand cru 2009",
+                  "systopparent": "212430611844506277",
+                  "systopparentid": 212430611844506270,
+                  "sysuri": "http://www.saq.com/items/Marc Tempé Gewurztraminer Mambourg grand cru 2009",
+                  "sysurihash": "6ui3FW/HEz//bw3p",
+                  "title": "Marc Tempé Gewurztraminer Mambourg grand cru 2009",
+                  "topparent": "212430611844506277",
+                  "topparentid": 212430611844506270,
+                  "tpbouchon": "Liège",
+                  "tpcategorie": "Vin blanc",
+                  "tpcategorieraw": "Vin blanc, 750 ml",
+                  "tpcepagenomsplitgroup": "Gewurztraminer",
+                  "tpcepagesplitgroup": "Gewurztraminer 100 %",
+                  "tpcodecup": "04000121847320",
+                  "tpcodesaq": "12184732",
+                  "tpcontenant": "Contenant de verre coloré",
+                  "tpcouleur": "Blanc",
+                  "tpcoveoconnectorhasbinarydata": "false",
+                  "tpdisponibilite": "Bientôt disponible",
+                  "tpformat": "750 ml",
+                  "tpmillesime": "2009",
+                  "tpnomdebouteille": "Marc Tempé Gewurztraminer Mambourg grand cru 2009",
+                  "tppagetitle": "Marc Tempé Gewurztraminer Mambourg grand cru 2009",
+                  "tpparticularite": "Produit bio",
+                  "tpparticularitesplitgroup": "Produit bio;",
+                  "tppays": "France",
+                  "tpprixbande": "50$ - 75$",
+                  "tpprixnormal": "62,25 $",
+                  "tpprixnum": 62.25,
+                  "tpproducteur": "Marc Tempé",
+                  "tpregion": "Alsace",
+                  "tpthumbnailuri": "http://s7d9.scene7.com/is/image/SAQ/12184732_is",
+                  "uri": "http://www.saq.com/items/Marc Tempé Gewurztraminer Mambourg grand cru 2009",
+                  "urihash": "6ui3FW/HEz//bw3p",
+                },
+                "score": 1080,
+                "summaryHighlights": Array [],
+                "title": "Marc Tempé Gewurztraminer Mambourg grand cru 2009",
+                "titleHighlights": Array [],
+                "totalNumberOfChildResults": 0,
+                "uniqueId": "-1$0$30292.23337$https://www.saq.com/page/fr/saqcom/vin-blanc/marc-tempe-gewurztraminer-mambourg-grand-cru-2009/12184732",
+                "uri": "https://www.saq.com/page/fr/saqcom/vin-blanc/marc-tempe-gewurztraminer-mambourg-grand-cru-2009/12184732",
+              }
+            }
+            key="-1$0$30292.23337$https://www.saq.com/page/fr/saqcom/vin-blanc/marc-tempe-gewurztraminer-mambourg-grand-cru-2009/12184732"
+          >
+            <li
+              className="card"
+              key="-1$0$30292.23337$https://www.saq.com/page/fr/saqcom/vin-blanc/marc-tempe-gewurztraminer-mambourg-grand-cru-2009/12184732"
+            >
+              <a
+                href="https://www.saq.com/page/fr/saqcom/vin-blanc/marc-tempe-gewurztraminer-mambourg-grand-cru-2009/12184732"
+              >
+                <img
+                  className="card-image"
+                  src="http://s7d9.scene7.com/is/image/SAQ/12184732_is"
+                />
+              </a>
+              <a
+                href="https://www.saq.com/page/fr/saqcom/vin-blanc/marc-tempe-gewurztraminer-mambourg-grand-cru-2009/12184732"
+              >
+                <h5>
+                  Marc Tempé Gewurztraminer Mambourg grand cru 2009
+                </h5>
+              </a>
+              <ul
+                className="card-info"
+              >
+                <li>
+                  <MdLocationOn>
+                    <IconBase
+                      attr={
+                        Object {
+                          "viewBox": "0 0 24 24",
+                        }
+                      }
+                    >
+                      <svg
+                        fill="currentColor"
+                        height="1em"
+                        stroke="currentColor"
+                        strokeWidth="0"
+                        style={
+                          Object {
+                            "color": undefined,
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                          key="0"
+                        />
+                      </svg>
+                    </IconBase>
+                  </MdLocationOn>
+                   
+                  France
+                </li>
+                <li>
+                  <MdLocationCity>
+                    <IconBase
+                      attr={
+                        Object {
+                          "viewBox": "0 0 24 24",
+                        }
+                      }
+                    >
+                      <svg
+                        fill="currentColor"
+                        height="1em"
+                        stroke="currentColor"
+                        strokeWidth="0"
+                        style={
+                          Object {
+                            "color": undefined,
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M15 11V5l-3-3-3 3v2H3v14h18V11h-6zm-8 8H5v-2h2v2zm0-4H5v-2h2v2zm0-4H5V9h2v2zm6 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2zm6 12h-2v-2h2v2zm0-4h-2v-2h2v2z"
+                          key="0"
+                        />
+                      </svg>
+                    </IconBase>
+                  </MdLocationCity>
+                   
+                  Alsace
+                </li>
+                <li>
+                  CA$62.25
+                </li>
+              </ul>
+              <ul
+                className="tags"
+              />
+            </li>
+          </Card>
+        </ul>
+        <div
+          className="bottom flex-center"
+        >
+          <PaginationBoxView
+            activeClassName="active"
+            breakClassName="break-me"
+            breakLabel="..."
+            containerClassName="pagination"
+            disableInitialCallback={false}
+            disabledClassName="disabled"
+            marginPagesDisplayed={2}
+            nextClassName="next"
+            nextLabel="next"
+            onPageChange={[Function]}
+            pageCount={1146}
+            pageRangeDisplayed={5}
+            previousClassName="previous"
+            previousLabel="previous"
+          >
+            <ul
+              className="pagination"
+            >
+              <li
+                className="previous disabled"
+              >
+                <a
+                  aria-disabled="true"
+                  onClick={[Function]}
+                  onKeyPress={[Function]}
+                  role="button"
+                  tabIndex="0"
+                >
+                  previous
+                </a>
+              </li>
+              <PageView
+                activeClassName="active"
+                key="0"
+                onClick={[Function]}
+                page={1}
+                selected={true}
+              >
+                <li
+                  className="active"
+                >
+                  <a
+                    aria-current="page"
+                    aria-label="Page 1 is your current page"
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    role="button"
+                    tabIndex="0"
+                  >
+                    1
+                  </a>
+                </li>
+              </PageView>
+              <PageView
+                activeClassName="active"
+                key="1"
+                onClick={[Function]}
+                page={2}
+                selected={false}
+              >
+                <li>
+                  <a
+                    aria-current={null}
+                    aria-label="Page 2"
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    role="button"
+                    tabIndex="0"
+                  >
+                    2
+                  </a>
+                </li>
+              </PageView>
+              <PageView
+                activeClassName="active"
+                key="2"
+                onClick={[Function]}
+                page={3}
+                selected={false}
+              >
+                <li>
+                  <a
+                    aria-current={null}
+                    aria-label="Page 3"
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    role="button"
+                    tabIndex="0"
+                  >
+                    3
+                  </a>
+                </li>
+              </PageView>
+              <PageView
+                activeClassName="active"
+                key="3"
+                onClick={[Function]}
+                page={4}
+                selected={false}
+              >
+                <li>
+                  <a
+                    aria-current={null}
+                    aria-label="Page 4"
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    role="button"
+                    tabIndex="0"
+                  >
+                    4
+                  </a>
+                </li>
+              </PageView>
+              <PageView
+                activeClassName="active"
+                key="4"
+                onClick={[Function]}
+                page={5}
+                selected={false}
+              >
+                <li>
+                  <a
+                    aria-current={null}
+                    aria-label="Page 5"
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    role="button"
+                    tabIndex="0"
+                  >
+                    5
+                  </a>
+                </li>
+              </PageView>
+              <PageView
+                activeClassName="active"
+                key="5"
+                onClick={[Function]}
+                page={6}
+                selected={false}
+              >
+                <li>
+                  <a
+                    aria-current={null}
+                    aria-label="Page 6"
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    role="button"
+                    tabIndex="0"
+                  >
+                    6
+                  </a>
+                </li>
+              </PageView>
+              <BreakView
+                breakClassName="break-me"
+                breakLabel="..."
+                key="6"
+                onClick={[Function]}
+              >
+                <li
+                  className="break-me"
+                >
+                  <a
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    role="button"
+                    tabIndex="0"
+                  >
+                    ...
+                  </a>
+                </li>
+              </BreakView>
+              <PageView
+                activeClassName="active"
+                key="1144"
+                onClick={[Function]}
+                page={1145}
+                selected={false}
+              >
+                <li>
+                  <a
+                    aria-current={null}
+                    aria-label="Page 1145"
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    role="button"
+                    tabIndex="0"
+                  >
+                    1145
+                  </a>
+                </li>
+              </PageView>
+              <PageView
+                activeClassName="active"
+                key="1145"
+                onClick={[Function]}
+                page={1146}
+                selected={false}
+              >
+                <li>
+                  <a
+                    aria-current={null}
+                    aria-label="Page 1146"
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    role="button"
+                    tabIndex="0"
+                  >
+                    1146
+                  </a>
+                </li>
+              </PageView>
+              <li
+                className="next"
+              >
+                <a
+                  aria-disabled="false"
+                  onClick={[Function]}
+                  onKeyPress={[Function]}
+                  role="button"
+                  tabIndex="0"
+                >
+                  next
+                </a>
+              </li>
+            </ul>
+          </PaginationBoxView>
+        </div>
+      </reduxRenderPropRender>
+    </ConnectAdvanced(reduxRenderPropRender)>
+  </Component>
+</Provider>
+`;

@@ -22,7 +22,7 @@ interface SearchBoxProps extends RouteComponentProps<any> {
 }
 
 
-const SearchBox: FC<SearchBoxProps> = ({ searchAction, updateSearchQueryAction, history, queryParams, status }) => {
+export const SearchBox: FC<SearchBoxProps> = ({ searchAction, updateSearchQueryAction, history, queryParams, status }) => {
     const {q = '', ...qp} = queryString.parse(location.search)
 
     return (

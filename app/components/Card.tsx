@@ -24,7 +24,7 @@ const Card: FC<CardProps> = (props) => {
                 <li><MdLocationOn /> {raw.tppays}</li>
                 <li><MdLocationCity /> {raw.tpregion}</li>
                 <li>
-                { numFormat.format(parseFloat(raw.tpprixnum)) }
+                { numFormat.format(parseFloat(`${raw.tpprixnum}`)) }
                 </li>
             </ul>
             <ul className='tags'></ul>
