@@ -55,9 +55,9 @@ export class FacetReducer extends ImmerReducer<State> {
 
     hydrateFacets(payload: RawFacet[]) {
         const facets = this.selectors.getFacetList()
-        if (Object.keys(facets).length > 0) return;
+        //if (Object.keys(facets).length > 0) return;
 
-        payload.map((facetPayload: RawFacet) => {
+        payload.forEach((facetPayload: RawFacet) => {
             this.addFacet(facetPayload)
         })
     }
@@ -195,7 +195,7 @@ export class SearchReducer extends ImmerReducer<State> {
 
             facets[k].values
             .filter(v => v.checked || v.exclude)
-            .map(v => {
+            .forEach(v => {
 
                 // Checked
                 if (v.checked && !v.exclude) includes.push(v.lookupValue)
